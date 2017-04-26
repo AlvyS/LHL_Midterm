@@ -16,13 +16,17 @@
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
-    "knex": "^0.11.7",
+    "knex": "^0.11.10",
     "knex-logger": "^0.1.0",
     "morgan": "^1.7.0",
     "node-sass-middleware": "^0.9.8",
-    "pg": "^6.0.2"
+    "nodemon": "^1.11.0"
   },
   "devDependencies": {
+<<<<<<< HEAD
     "nodemon": "^1.11.0"
+=======
+    "nodemon": "^1.9.2"
+>>>>>>> 2209f260b5de209a32dad3435bca7837b877d2d4
   }
 }
