@@ -23,10 +23,6 @@
     "nodemon": "^1.11.0"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "nodemon": "^1.11.0"
-=======
     "nodemon": "^1.9.2"
->>>>>>> 2209f260b5de209a32dad3435bca7837b877d2d4
   }
 }
