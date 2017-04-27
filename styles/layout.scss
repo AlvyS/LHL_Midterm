@@ -1,29 +1,7 @@
-// VARIABLES
-
-$Green:  #668E3E;
-$Yellow: #F1B988;
-$orange: #D9692B;
-$brown:  #5B3125;
-$red:    #DA2224;
-$black: #2b2e2f;
-$bgcolor: #f5f5f5;
-$header-color: #ca4b21;
-$accent-color: #8c4292;
-$accent-color2: #8838ff;
-$gray: #7f7f7f;
-
+@import 'settings';
 @import 'header';
 @import 'body';
 @import 'content';
-
-// MIXINS
-
-@mixin border-radius($radius){
-    -webkit-border-radius: $radius;
-       -moz-border-radius: $radius;
-        -ms-border-radius: $radius;
-            border-radius: $radius;
-}
 
 h1,
 h2,
@@ -40,7 +18,7 @@ h1, h2, h3, p, a {
 }
 
 h1, h2, h3 {
-  color: $gray;
+  color: $black;
 }
 
 h2, h3 {
@@ -84,71 +62,4 @@ p {
 h2, h3 {
   font-weight: 300;
   margin-bottom: 25px;
-}
-
-@keyframes animScale {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 40px, 0) scale3d(0.1, 0.6, 1);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
-  }
-}
-
-@media only screen and (max-width: 40em) {
-  p, a, h1, h2, h3 {
-    text-align: center;
-  }
-  h1 {
-    font-size: 1.5em;
-  }
-  h3 {
-    margin: 30px 0 40px 0;
-  }
-
-  .pad {
-    padding: 1.2em;
-  }
-  canvas {
-    height: 100%;
-  }
-}
-
-@-webkit-keyframes enlarge {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-
-  40% {
-    -webkit-transform: scale(1.15);
-    transform: scale(1.15);
-  }
-
-  100% {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-  }
-}
-
-
-@keyframes enlarge {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-
-  40% {
-    -webkit-transform: scale(1.15);
-    transform: scale(1.15);
-  }
-
-  100% {
-    -webkit-transform: scale(1.05);
-    transform: scale(1.05);
-  }
-
 }
