@@ -15,7 +15,7 @@ module.exports = (knex) => {
     });
 
 
-  /*router.get("/users", (req, res) => {
+  router.get("/users", (req, res) => {
     knex
       .select("*")
       .from("users")
