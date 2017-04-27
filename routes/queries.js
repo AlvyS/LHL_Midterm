@@ -3,7 +3,7 @@
 const express = require('express');
 const router  = express.Router();
 
-let knex = require('knex')({
+/*let knex = require('knex')({
   client: 'pg',
   connection: {
     host: 'localhost',
@@ -11,7 +11,7 @@ let knex = require('knex')({
     password: 'labber',
     database: 'midterm'
   }
-});
+});*/
 
 module.exports = {
 
