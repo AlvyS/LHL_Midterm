@@ -1,0 +1,69 @@
+
+body {
+  background-color: $bgcolor;
+  padding-top: 6em;	
+  line-height: 1.7em;
+	color: $brown;
+	font-size: 13px;
+	font-family: 'Patua One', cursive;
+
+  .splash-container{
+    background: $orange;
+    // overflow: hidden;
+    width: 100%;
+    height: 58%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    .splash{
+        width: 100%;
+        height: 50%;
+        margin: auto;
+        position: absolute;
+        top: 100px; left: 0; bottom: 0; right: 0;
+        text-align: center;
+        text-transform: uppercase;
+
+        #search {
+        background: $bgcolor;
+        border: 0;
+        color: $bgcolor;
+        display: inline;
+        width: 400px;
+        height: 45px;
+        font-size: .95em;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        &::-webkit-input-placeholder, &::-moz-input-placeholder, &:-ms-input-placeholder, &:-moz-input-placeholder {
+          color: $gray;
+        }
+      }
+      .splash-head{
+        font-size: 42px;
+        font-weight: bold;
+        color: $bgcolor;
+        border: 3px solid white;
+        padding: 1em 1.6em;
+        font-weight: 100;
+        border-radius: 5px;
+        line-height: 1em;	
+      }
+      video#bgvid{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        z-index: -100;
+        transform: translateX(-50%) translateY(-50%);
+        -webkit-transform: translateX(-50%) translateY(-50%);
+        -moz-transform: translateX(-50%) translateY(-50%);
+        background: url(images/splash.jpg);
+        background-size: cover;
+      }  
+    }
+  }
+}

@@ -14,6 +14,14 @@ module.exports = (knex) => {
       console.log("inside users.js :",users);
       res.render("index");
     });
+
+  router.get("/users", (req, res) => {
+    knex
+      .select("*")
+      .from("users")
+      .then((results) => {
+        res.json({"get" : "hey i am from /users"});
+    });
   });
 
   //calls getAllOrders in queries.js.
