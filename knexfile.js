@@ -23,10 +23,10 @@ module.exports = {
     client: 'postgresql',
     connection: {
       DATABASE_URL: process.env.DATABASE_URL,
-      user     : process.env.H_DB_USER,
-      password : process.env.H_DB_PASS,
-      database : process.env.H_DB_NAME,
-      port     : process.env.H_DB_PORT,
+      // user     : process.env.H_DB_USER,
+      // password : process.env.H_DB_PASS,
+      // database : process.env.H_DB_NAME,
+      // port     : process.env.H_DB_PORT,
       ssl: true
     },
     migrations: {
