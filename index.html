@@ -7,11 +7,15 @@
   <title>Mid Term Project</title>
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
   <link media="all" type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation-flex.min.css">
-  <link media="all" type="text/css" rel="stylesheet" href="public/styles/layout.css">
+  <link media="all" type="text/css" rel="stylesheet" href="./public/styles/layout.css">
+
     <!-- External JS -->
-  <script type="text/javascript" src="/vendor/jquery-3.0.0.min.js"></script>
+  <script type="text/javascript" src="./public/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+  
   <!-- Application JS -->
+  <script type="text/javascript" src="public/scripts/app.js"></script>
+
 </head>
 <body>
   <div class="row">
@@ -39,101 +43,160 @@
         <div class=>
           <a href="#" class="btn" id="view-all">View all Menus</a>
         </div>-->
-          <div id="item-container">
-            <div class="item-photo">
-              <img class='thumbnail' src="public/images/seafood.jpg">
-              <div id='modal'>
-                <div class='modal-content'>
-                 <p> Modal Text </p>
+          <div id="item-one">
+            <div class="item-container">
+              <div class="item-photo">
+                <img class='thumbnail' src="public/images/seafood.jpg">
+                <div class='modal' data-keyboard='false' data-backdrop='static' href='#'>
+                  <div class='modal-content'>
+                    <span class='modal-close'>&times;</span>
+                    <p class='modal-text'> Modal Text 1 </p>
+                  </div>
                 </div>
               </div>
+              <div class="item-desc">
+                <div class="item-name">Item 1</div>
+                <div class="item-price">Price 1</div>
+              </div>
             </div>
-            <div class="item-desc">
-              <div class="item-name">Item 1</div>
-              <div class="item-price">Price 1</div>
+           </div>
+          <!---->
+          <div id="item-two">
+            <div class="item-container">
+              <div class="item-photo">
+                <img class='thumbnail' src="public/images/dumpling.jpg">
+                <div class='modal'>
+                  <div class='modal-content'>
+                    <span class='modal-close'>&times;</span>
+                    <p class='modal-text'> Modal Text 2 </p>
+                  </div>
+                </div>
+              </div>
+              <div class="item-desc">
+                <div class="item-name">Item 2</div>
+                <div class="item-price">Price 2</div>
+              </div>
             </div>
-          </div>
-          <div id="item-container">
-            <div class="item-photo">
-              <img class='thumbnail' src="public/images/seafood.jpg">
-              <h3>
-              </h3>
+           </div>
+           <!---->
+           <div id="item-three">
+            <div class="item-container">
+              <div class="item-photo">
+                <img class='thumbnail' src="public/images/porkstew.jpg">
+                <div class='modal'>
+                  <div class='modal-content'>
+                    <img class='modal-image' src="public/images/porkstew.jpg">
+                    <p class='modal-text'> Modal Text 3</p>
+                    <span class='modal-close'>&times;</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item-desc">
+                <div class="item-name">Item 3</div>
+                <div class="item-price">Price 3</div>
+              </div>
             </div>
-            <div class="item-desc">
-              <div class="item-name"></div>
-              <div class="item-price"></div>
+           </div>
+            <!---->
+           <div id="item-four">
+            <div class="item-container">
+              <div class="item-photo">
+                <img class='thumbnail' src="public/images/redbean.jpg">
+                <div class='modal'>
+                  <div class='modal-content'>
+                    <span class='modal-close'>&times;</span>
+                    <p class='modal-text'> Modal Text 4</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item-desc">
+                <div class="item-name">Item 4</div>
+                <div class="item-price">Price 4</div>
+              </div>
             </div>
-          </div>
-          <div id="item-container">
-            <div class="item-photo">
-              <img class='thumbnail' src="public/images/seafood.jpg">
-              <h3>
-              </h3>
+           </div>
+            <!---->
+           <div id="item-three">
+            <div class="item-container">
+              <div class="item-photo">
+                <img class='thumbnail' src="public/images/seafood.jpg">
+                <div class='modal'>
+                  <div class='modal-content'>
+                    <span class='modal-close'>&times;</span>
+                    <p class='modal-text'> Modal Text 5</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item-desc">
+                <div class="item-name">Item 5</div>
+                <div class="item-price">Price 5</div>
+              </div>
             </div>
-            <div class="item-desc">
-              <div class="item-name"></div>
-              <div class="item-price"></div>
+           </div>
+            <!---->
+           <div id="item-six">
+            <div class="item-container">
+              <div class="item-photo">
+                <img class='thumbnail' src="public/images/dumpling.jpg">
+                <div class='modal'>
+                  <div class='modal-content'>
+                    <span class='modal-close'>&times;</span>
+                    <p class='modal-text'> Modal Text 6</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item-desc">
+                <div class="item-name">Item 6</div>
+                <div class="item-price">Price 6</div>
+              </div>
             </div>
-          </div>
-          <div id="item-container">
-            <div class="item-photo">
-              <img class='thumbnail' src="public/images/seafood.jpg">
-              <h3>
-              </h3>
+           </div>
+            <!---->
+           <div id="item-seven">
+            <div class="item-container">
+              <div class="item-photo">
+                <img class='thumbnail' src="public/images/porkstew.jpg">
+                <div class='modal'>
+                  <div class='modal-content'>
+                    <span class='modal-close'>&times;</span>
+                    <p class='modal-text'> Modal Text 7</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item-desc">
+                <div class="item-name">Item 7</div>
+                <div class="item-price">Price 7</div>
+              </div>
             </div>
-            <div class="item-desc">
-              <div class="item-name"></div>
-              <div class="item-price"></div>
+           </div>
+            <!---->
+           <div id="item-eight">
+            <div class="item-container">
+              <div class="item-photo">
+                <img class='thumbnail' src="public/images/seafood.jpg">
+                <div class='modal'>
+                  <div class='modal-content'>
+                    <span class='modal-close'>&times;</span>
+                    <p class='modal-text'> Modal Text 8</p>
+                  </div>
+                </div>
+              </div>
+              <div class="item-desc">
+                <div class="item-name">Item 8</div>
+                <div class="item-price">Price 8</div>
+              </div>
             </div>
-          </div>
-          <div id="item-container">
-            <div class="item-photo">
-              <img class='thumbnail' src="public/images/seafood.jpg">
-              <h3>
-              </h3>
-            </div>
-            <div class="item-desc">
-              <div class="item-name"></div>
-              <div class="item-price"></div>
-            </div>
-          </div>
-          <div id="item-container">
-            <div class="item-photo">
-              <img class='thumbnail' src="public/images/seafood.jpg">
-              <h3>
-              </h3>
-            </div>
-            <div class="item-desc">
-              <div class="item-name"></div>
-              <div class="item-price"></div>
-            </div>
-          </div>
-          <div id="item-container">
-            <div class="item-photo">
-              <img class='thumbnail' src="public/images/seafood.jpg">
-              <h3>
-              </h3>
-            </div>
-            <div class="item-desc">
-              <div class="item-name"></div>
-              <div class="item-price"></div>
-            </div>
-          </div>
-          <div id="item-container">
-            <div class="item-photo">
-              <img class='thumbnail' src="public/images/seafood.jpg">
-              <h3>
-              </h3>
-            </div>
-            <div class="item-desc">
-              <div class="item-name"></div>
-              <div class="item-price"></div>
-            </div>
-          </div>
-      </div>
-    </div>
+           </div>
+
+
+
+
+
+
+           
   </div>
 </div>
- 
+
+
 </body>
 </html>
