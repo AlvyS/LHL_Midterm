@@ -7,7 +7,7 @@ const router  = express.Router();
 module.exports = {
 
   //get home page with all menu list
-  getRoute: (knex, done) => {
+ /* getRoute: (knex, done) => {
     knex
       .select("*")
       .from("users")
@@ -15,7 +15,7 @@ module.exports = {
         done(results);
         console.log("from queries.json inside getRoute");
     });
-  },
+  },*/
 
 getItems: (knex, done) => {
     knex
@@ -27,40 +27,6 @@ getItems: (knex, done) => {
     });
   },
 
-  //get all orders from orders table.
-  getAllOrders: (knex, done) => {
-    knex
-      .select("*")
-      .from("orders")
-      .then((results) => {
-        done(results);
-        console.log("from queries.json inside getAllOrders");
-    });
-  },
-
-  // get all order details of particular order from order_details table.
-  getOrderDetails: (knex, order_id, done) => {
-    knex
-      .select("*")
-      .from("order_details")
-      .where('id', order_id)
-      .then((results) => {
-        console.log("from queries.json inside getOrderDetails");
-        done(results);
-    });
-  },
-
-  //get checkout details of orders of an user.
-  getOrderCheckout: (knex, order_id, done) => {
-    knex
-      .select("*")
-      .from("order_details")
-      .where('order_id', order_id)
-      .then((results) => {
-        console.log("from queries.json inside getOrderCheckout");
-        done(results);
-    });
-  },
 
 
   // add item to cart.
@@ -109,6 +75,41 @@ getItems: (knex, done) => {
     });
   },
 
+  //get all orders from orders table.
+ /* getAllOrders: (knex, done) => {
+    knex
+      .select("*")
+      .from("orders")
+      .then((results) => {
+        done(results);
+        console.log("from queries.json inside getAllOrders");
+    });
+  },
+
+  // get all order details of particular order from order_details table.
+  getOrderDetails: (knex, order_id, done) => {
+    knex
+      .select("*")
+      .from("order_details")
+      .where('id', order_id)
+      .then((results) => {
+        console.log("from queries.json inside getOrderDetails");
+        done(results);
+    });
+  },
+
+  //get checkout details of orders of an user.
+  getOrderCheckout: (knex, order_id, done) => {
+    knex
+      .select("*")
+      .from("order_details")
+      .where('order_id', order_id)
+      .then((results) => {
+        console.log("from queries.json inside getOrderCheckout");
+        done(results);
+    });
+  },
+
 
   //place order
   placeOrder:(knex, sessionCart, done) => {
@@ -130,22 +131,25 @@ getItems: (knex, done) => {
               restaurants_id : 1
              }).returning('id')
       .then(orderid => {
-          console.log("order created");
-      knex
-      .select('quantity', 'price', 'item_id')
-      .from("cart")
-      //.where ({session_id : sessionCart.session_id})
-      .then((results) => {
-        console.log("rohit");
-        console.log(results);
-        done(results);
-
-      //   console.log("from queries.json inside getRoute");
-
-      // knex("order_details")
-      //   .insert([{...}, {...}])
-    });
-    });
+        console.log("order created");
+        knex
+        .select('quantity', 'price', 'item_id')
+        .from("cart")
+        .where ({session_id : sessionCart.session_id})
+        .then((results) => {
+          results.map( row => {
+            row.order_id = orderid[0];
+            knex('order_details')
+            .insert({ quantity: row.quantity,
+                      price: row.price,
+                      item_id: row.item_id,
+                      order_id: row.order_id
+               }).then(() => {
+                  done();
+               });
+          });
+        });
+      });
     });
   },
   //update order and order_details table.
@@ -182,5 +186,5 @@ getItems: (knex, done) => {
         // }
         done();
     });
-  }
+  }*/
 };

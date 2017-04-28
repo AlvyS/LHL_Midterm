@@ -3,7 +3,7 @@
 const express = require('express');
 const router  = express.Router();
 const queries = require('./queries');
-//const bodyParser  = require("body-parser");
+const app = express();
 
 module.exports = (knex) => {
 
@@ -15,51 +15,6 @@ module.exports = (knex) => {
       res.json({"get" : items});
     });
   });
-
-  /*router.get("/users", (req, res) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        res.json({"get" : "hey i am from /users"});
-    });
-  });*/
-
-  //calls getAllOrders in queries.js.
-  /*router.get("/order", (req, res) => {
-
-    queries.getAllOrders(knex, (order) => {
-      console.log("inside users.js :",order);
-      res.json({"get" : `${order}`});
-    });
-  });*/
-
-  //to get order details of particular order.
-  /*router.get("/order/:id", (req, res) => {
-    const order_id = req.params.id;
-    queries.getOrderDetails(knex,order_id, (order) => {
-      console.log("inside users.js :",order);
-      res.json({"get perticular order id : " : `${order}`});
-    });
-  });*/
-
-  //get checkout details of a pirticular user.
-  /*router.get("/order/:id/checkout", (req, res) => {
-    const order_id = req.params.id;
-    queries.getOrderCheckout(knex,order_id, (order) => {
-      console.log("inside users.js :",order_id);
-      res.json({"get perticular order checkout : " : `${order}`});
-    });
-  });*/
-
-  //get individual item details from item table.
-  /*router.get("/items/:id", (req, res) => {
-    const item_id = req.params.id;
-    queries.getItemDetails(knex,item_id, (item) => {
-      console.log("inside users.js :",item);
-      res.json({"get perticular order checkout : " : `${item}`});
-    });
-  });*/
 
   //add item of particulas session into cart.
   router.post("/cart/:session_id/:item_id/add", (req, res) => {
@@ -140,7 +95,7 @@ module.exports = (knex) => {
   });
 
 
-  router.post("/order/:id", (req, res) => {
+ /* router.post("/order/:id", (req, res) => {
     const order  = {
       order_id : req.params.id,
       item_id : req.body.item_id,
@@ -154,6 +109,54 @@ module.exports = (knex) => {
       res.json({"posted perticular order details" : "postOrderDetails"});
     });
   });
+
+  router.get("/users", (req, res) => {
+    knex
+      .select("*")
+      .from("users")
+      .then((results) => {
+        res.json({"get" : "hey i am from /users"});
+    });
+  });*/
+
+  //calls getAllOrders in queries.js.
+  /*router.get("/order", (req, res) => {
+
+    queries.getAllOrders(knex, (order) => {
+      console.log("inside users.js :",order);
+      res.json({"get" : `${order}`});
+    });
+  });*/
+
+  //to get order details of particular order.
+  /*router.get("/order/:id", (req, res) => {
+    const order_id = req.params.id;
+    queries.getOrderDetails(knex,order_id, (order) => {
+      console.log("inside users.js :",order);
+      res.json({"get perticular order id : " : `${order}`});
+    });
+  });*/
+
+  //get checkout details of a pirticular user.
+  /*router.get("/order/:id/checkout", (req, res) => {
+    const order_id = req.params.id;
+    queries.getOrderCheckout(knex,order_id, (order) => {
+      console.log("inside users.js :",order_id);
+      res.json({"get perticular order checkout : " : `${order}`});
+    });
+  });*/
+
+  //get individual item details from item table.
+  /*router.get("/items/:id", (req, res) => {
+    const item_id = req.params.id;
+    queries.getItemDetails(knex,item_id, (item) => {
+      console.log("inside users.js :",item);
+      res.json({"get perticular order checkout : " : `${item}`});
+    });
+  });*/
+
+
+
 
  /* router.post("/order/:id/checkout", (req, res) => {
     res.json({"get" : "hey i am from /order/:id/checkout"});
