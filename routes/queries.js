@@ -93,76 +93,61 @@ getItems: (knex, done) => {
     .where({session_id : sessionCart.session_id, item_id : sessionCart.item_id})
     .update({ quantity : sessionCart.quantity,
               price : sessionCart.price
+             }).then(() => {
+                console.log("updated cart");
+                done();
              });
-
-    console.log("updated cart");
-    done();
   },
 
   //delete cart item.
   deleteCartItem: (knex, sessionCart, done) => {
     knex('cart')
     .where({session_id : sessionCart.session_id, item_id : sessionCart.item_id})
-    .del();
-
-    console.log("deleted cart");
-    done();
+    .del().then(() => {
+      console.log("deleted cart");
+      done();
+    });
   },
 
 
   //place order
-  /*placeOrder:(knex, cart, done) => {
-    return knex('users')
-            .insert({
-              first_name: cart.first_name,
-              last_name: cart.last_name,
-              phone: cart.phone
-            }).returning("id")
-
-    // knex
-    // .select('id')
-    // .from('users')
-    // .where({'first_name' : cart.first_name, 'last_name' : cart.last_name, 'phone' : cart.phone})
+  placeOrder:(knex, sessionCart, done) => {
+    knex('users')
+    .insert({
+      first_name: sessionCart.first_name,
+      last_name: sessionCart.last_name,
+      phone: sessionCart.phone
+    }).returning("id")
     .then((userid) => {
-      console.log('userid', userid);
-      // const total = knex('cart').sum('price');
-
+      var tempuserid = userid[0];
+      //console.log('userid', userid[0]);
+      const total = knex('cart').sum('price');
       knex('orders')
-        .insert({ date : Date.now(),
-                total_price : total,
-                status : "process",
-                user_id : userid,
-                restaurants_id : 1
-               }).returning("id")
-    .then(orderid => {
-        select quantity, price, item_id from carts c where session_id = 'mysession'
+      .insert({ date : '2017-04-26',
+              total_price : total,
+              status : "process",
+              user_id : tempuserid,
+              restaurants_id : 1
+             }).returning('id')
+      .then(orderid => {
+          console.log("order created");
+      knex
+      .select('quantity', 'price', 'item_id')
+      .from("cart")
+      //.where ({session_id : sessionCart.session_id})
+      .then((results) => {
+        console.log("rohit");
+        console.log(results);
+        done(results);
 
+      //   console.log("from queries.json inside getRoute");
 
-      knex("order_details")
-        .insert([{...}, {...}])
-    })
-
-      // knex
-      // .select('id')
-      // .from('orders')
-      // .where('user_id',userid)
-      // .then((orderid) => {
-
-      //   const qb = knex
-      //   .from('order_details')
-      //   .insert(function() {
-      //   this.from('cart as c')
-      //   .where('c.session_id', session_id)
-      //   .select('quantity', 'price', 'item_id')
-      //   this.order_id = orderid;
-
-      //   });
-      //   console.log(qb.toString());
-      // });
-
-
-    })
-  },*/
+      // knex("order_details")
+      //   .insert([{...}, {...}])
+    });
+    });
+    });
+  },
   //update order and order_details table.
   postOrderDetails: (knex, order, done) => {
     console.log("hiiiiii",order.order_id);

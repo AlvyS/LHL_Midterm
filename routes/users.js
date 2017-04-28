@@ -114,7 +114,7 @@ module.exports = (knex) => {
 
   // get cart details for that session.
   router.get("/checkout/:session_id", (req, res) => {
-    const session_id = req.params.id;
+    const session_id = req.params.session_id;
     queries.getSessionCart(knex,session_id, (item) => {
       console.log("inside users.js :",item);
       res.json({"get  cart details of pirticular user : " : `${item}`});
