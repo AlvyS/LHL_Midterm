@@ -3,7 +3,7 @@
 if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 
 const PORT        = process.env.PORT || 8080;
-const ENV         = process.env.ENV || "development";
+const ENV         = process.env.ENV || "production";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
