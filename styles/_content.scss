@@ -64,10 +64,14 @@
             font-size: 2em;
           }
           .modal-image { 
-            height: 40%;
-            width: 50%;
+            height: 50%;
+            width: 100%;
+          }
+          .modal-item-quantity {
+            width: 10%;
           }
           .modal-close {
+            position: absolute;
             z-index: 2;
             font-size: 4em;
             float: right;
