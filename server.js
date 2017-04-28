@@ -1,6 +1,6 @@
 "use strict";
 
-if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+require('dotenv').config()
 
 const PORT        = process.env.PORT || 8080;
 const env         = process.env.NODE_ENV || "development";
@@ -8,9 +8,9 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
-const knexConfig  = require("./knexfile");
 const knexBuilder = require("knex");
-const knex        = (knexConfig[env]);
+const knexConfig  = require("./knexfile");
+const knex        = knexBuilder(knexConfig[env]);
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
