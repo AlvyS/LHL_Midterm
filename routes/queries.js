@@ -74,7 +74,7 @@ getItems: (knex, done) => {
   },*/
 
   //get all orders from orders table.
- /* getAllOrders: (knex, done) => {
+  getAllOrders: (knex, done) => {
     knex
       .select("*")
       .from("orders")
@@ -143,7 +143,7 @@ getItems: (knex, done) => {
                       item_id: row.item_id,
                       order_id: row.order_id
                }).then(() => {
-                  done();
+                  done(orderid);
                });
           });
         });
@@ -184,5 +184,5 @@ getItems: (knex, done) => {
         // }
         done();
     });
-  }*/
+  }
 };
