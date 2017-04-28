@@ -1,4 +1,4 @@
-if (process.env.NODE_ENV !== 'production') require('dotenv').config()
+require('dotenv').config()
 module.exports = {
 
   development: {
@@ -22,7 +22,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      DATABASE_URL: process.env.DATABASE_URL,
+      // DATABASE_URL: process.env.DATABASE_URL,
       user     : process.env.H_DB_USER,
       password : process.env.H_DB_PASS,
       database : process.env.H_DB_NAME,
