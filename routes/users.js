@@ -13,7 +13,12 @@ module.exports = (knex) => {
     queries.getItems(knex, (items) => {
       console.log("inside users.js :",items);
 
-      res.render('index', {allitems : items});
+      //res.json( {"get" : items});
+      // var firstItem = items[0]
+      // res.render('index', firstItem);
+      // console.log(firstItem);
+
+      res.render('index',{allitems :items});
     });
   });
 
