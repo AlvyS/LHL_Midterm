@@ -18,6 +18,8 @@ module.exports = (knex) => {
       // console.log(firstItem);
 
       res.render('index',{allitems :items});
+
+
     });
   });
 
