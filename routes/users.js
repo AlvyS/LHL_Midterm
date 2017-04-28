@@ -12,7 +12,8 @@ module.exports = (knex) => {
 
     queries.getItems(knex, (items) => {
       console.log("inside users.js :",items);
-      res.json({"get" : items});
+     // res.json({"get" : items});
+      res.render('cart', items);
     });
   });
 

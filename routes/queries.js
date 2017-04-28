@@ -6,17 +6,6 @@ const router  = express.Router();
 
 module.exports = {
 
-  //get home page with all menu list
- /* getRoute: (knex, done) => {
-    knex
-      .select("*")
-      .from("users")
-      .then((results) => {
-        done(results);
-        console.log("from queries.json inside getRoute");
-    });
-  },*/
-
 getItems: (knex, done) => {
     knex
       .select("*")
@@ -26,8 +15,6 @@ getItems: (knex, done) => {
         console.log("from queries.json inside getRoute");
     });
   },
-
-
 
   // add item to cart.
   addItemToCart: (knex, sessionCart, done) => {
@@ -74,6 +61,17 @@ getItems: (knex, done) => {
       done();
     });
   },
+
+//get home page with all menu list
+ /* getRoute: (knex, done) => {
+    knex
+      .select("*")
+      .from("users")
+      .then((results) => {
+        done(results);
+        console.log("from queries.json inside getRoute");
+    });
+  },*/
 
   //get all orders from orders table.
  /* getAllOrders: (knex, done) => {
