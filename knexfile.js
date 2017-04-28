@@ -21,9 +21,14 @@ module.exports = {
   },
 
   production: {
-    client: 'pq',
+    client: 'postgresql',
     connection: {
-      DATABASE_URL: process.env.PROD_DB_URL
+      host     : process.env.H_DB_HOST,
+      user     : process.env.H_DB_USER,
+      password : process.env.H_DB_PASS,
+      database : process.env.H_DB_NAME,
+      port     : process.env.H_DB_PORT,
+      ssl: true
     },
     migrations: {
       directory: './db/migrations',
