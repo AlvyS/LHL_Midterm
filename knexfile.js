@@ -22,7 +22,7 @@ module.exports = {
   production: {
     client: 'postgresql',
     connection: {
-      host     : process.env.H_DB_HOST,
+      DATABASE_URL: process.env.DATABASE_URL,
       user     : process.env.H_DB_USER,
       password : process.env.H_DB_PASS,
       database : process.env.H_DB_NAME,
@@ -35,6 +35,6 @@ module.exports = {
     },
     seeds: {
       directory: './db/seeds'
-    }
+    },
   }
 };
