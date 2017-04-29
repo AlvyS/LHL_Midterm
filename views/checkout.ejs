@@ -17,14 +17,14 @@
       <br>
       <div class="row">
         <div class="columns medium-6">Order Date</div>
-      </div>    
+      </div>
       <br>
       <div class="row">
         <div class="columns medium-6">Restaurant Adddress</div>
       </div>
     </div>
     <div class="columns large-"7>
-      <form>
+      <form action="/placeorder" method="POST">
         <div class="row">
           <div class="columns large-3">
             <p>Qauntity</p>
@@ -64,10 +64,10 @@
         </div>
         <div class="row">
           <div class="columns large-3">
-            <a href="#" class="button">Place Order</a>
+            <input type='submit' class="button">Place Order and pay at the restaurant</input>
           </div>
           <div class="columns large-9">
-            <a href="#" class="button secondary">Cancel</a>
+            <a href="/" class="button secondary">Cancel</a>
           </div>
         </div>
       </form>
