@@ -802,6 +802,7 @@ Product Info (title + price)
 
 .cd-item-info em {
   float: right;
+  padding-left: 2em;
   color: #5484a0;
 }
 
@@ -811,6 +812,10 @@ Product Info (title + price)
 
 .cd-item-info a:hover {
   text-decoration: underline;
+}
+
+.cd-item-info .item-desc {
+  display: none;
 }
 
 .content {

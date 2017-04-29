@@ -307,7 +307,7 @@ Product Slider
 .cd-slider-wrapper {
 	position: relative;
 	overflow: hidden;
-	
+
 	li {
 		position: absolute;
 		top: 0;
@@ -640,6 +640,7 @@ Product Info (title + price)
 
 	em {
 		float: right;
+		padding-left: 2em;
 		color: lighten($navy, 20%);
 	}
 
@@ -649,6 +650,9 @@ Product Info (title + price)
 		&:hover {
 			text-decoration: underline;
 		}
+	}
+	.item-desc {
+		display: none;
 	}
 }
 
