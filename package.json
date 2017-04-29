@@ -1,14 +1,14 @@
 {
   "name": "node-skeleton",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Project Setup",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "local": "./node_modules/.bin/nodemon --ignore public/",
+    "local": "nodemon --ignore public/",
     "compile-sass": "./node_modules/node-sass/bin/node-sass --watch --recursive --output public/styles styles",
-    "knex": "./node_modules/.bin/knex"
+    "knex": "knex"
   },
   "author": "Lighthouse Labs",
   "license": "ISC",
@@ -27,12 +27,21 @@
     "node-sass-middleware": "^0.11.0",
     "nodeman": "^1.1.2",
     "pg": "^6.1.5",
-    "twilio": "^3.0.0-rc.16",
+    "twilio": "^3.0.0-rc16",
     "xml": "^1.0.1"
   },
   "devDependencies": {
     "knex-logger": "^0.1.0",
     "nodemon": "^1.11.0",
     "morgan": "^1.7.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlvyS/LHL_Midterm_FoodPickup.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/AlvyS/LHL_Midterm_FoodPickup/issues"
+  },
+  "homepage": "https://github.com/AlvyS/LHL_Midterm_FoodPickup#readme"
 }

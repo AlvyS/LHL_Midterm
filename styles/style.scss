@@ -2,12 +2,6 @@
 @import 'partials/variables'; // colors, fonts etc...
 @import 'partials/mixins'; // custom mixins
 @import 'partials/layout'; // responsive grid and media queries
-@import 'partials/settings';
-@import 'partials/header';
-@import 'partials/body';
-@import 'partials/content';
-@import 'partials/cart';
-
 
 /* -------------------------------- 
 Primary style
@@ -72,9 +66,7 @@ header {
 }
 
 /* -------------------------------- 
-
 Cart Container
-
 -------------------------------- */
 
 #cart-container {
@@ -84,12 +76,13 @@ Cart Container
   padding: 1em 0em 1em 1.5em;
   cursor: pointer;
   background-color: $green;
+	box-sizing: border-box;
   &:hover {
     background-color:$orange;
   }
-  .cart-image {
+  // .cart-image {
     
-  }
+  // }
   .cart-image i {
     color: $white;
   }
@@ -187,9 +180,7 @@ Cart Container
 
 
 /* -------------------------------- 
-
 Cart button
-
 -------------------------------- */
 
 .cd-cart {
@@ -234,9 +225,7 @@ Cart button
 }
 
 /* -------------------------------- 
-
 Gallery grid
-
 -------------------------------- */
 
 .cd-gallery {
@@ -281,9 +270,7 @@ Gallery grid
 }
 
 /* -------------------------------- 
-
 Single Item
-
 -------------------------------- */
 
 .cd-single-item {
@@ -314,9 +301,7 @@ Single Item
 }
 
 /* -------------------------------- 
-
 Product Slider
-
 -------------------------------- */
 
 .cd-slider-wrapper {
@@ -361,9 +346,7 @@ Product Slider
 }
 
 /* -------------------------------- 
-
 Product Customization
-
 -------------------------------- */
 
 .cd-customization {
@@ -419,7 +402,9 @@ Product Customization
 		}
 
 		ul {
-			
+			border-color: shade($yellow, 10%);
+			background-color: $yellow;	
+
 			li:first-of-type {
 				/* arrange list items according to the selected color/size option */
 				@include transform(translateY(100%));
@@ -614,9 +599,7 @@ Product Customization
 }
 
 /* -------------------------------- 
-
 Settings icon - touch devices only
-
 -------------------------------- */
 
 .cd-customization-trigger {
@@ -642,9 +625,7 @@ Settings icon - touch devices only
 }
 
 /* -------------------------------- 
-
 Product Info (title + price)
-
 -------------------------------- */
 
 .cd-item-info {
@@ -671,7 +652,7 @@ Product Info (title + price)
 	}
 }
 
-#content {
+.content {
     // position: absolute;
     top: 87%;
     width: 100%;
