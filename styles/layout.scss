@@ -2,6 +2,8 @@
 @import 'header';
 @import 'body';
 @import 'content';
+@import 'cart';
+
 
 h1,
 h2,
@@ -10,7 +12,7 @@ h4,
 h5,
 h6,
 label{
-	color: $Green;
+	color: $green;
   font-family: Raleway;
 }
 

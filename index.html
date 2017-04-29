@@ -12,17 +12,36 @@
     <!-- External JS -->
   <script type="text/javascript" src="./public/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
-  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css"/>
+
   <!-- Application JS -->
   <script type="text/javascript" src="public/scripts/app.js"></script>
 
 </head>
+
+
+
+
 <body>
   <div class="row">
     <header>
-        <img src="public/images/menu.svg" alt="menu">
+        <!--Cart-->
+        <div id='cart-container'>
+          <div class="cart-image"><i class="fa fa-shopping-cart fa-lg"></i></div>
+          <div class='modal-cart'>
+              <div class='modal-cart-content'>
+                <form method='GET' action='/checkout/:session_id'>
+                  <div class="checkout-row">
+                    <span class='modal-cart-close'>Close</span>
+                    <button class="checkout-button"> <i class="fa fa-shopping-cart fa-lg"></i><span> Checkout Now! </span></button>
+                  </div>
+                </form>
+          <!--Cart End-->
+              </div>
+            </div>
+          </div>
+        </div>   
     </header>
-  </div>
 
   <div class="row">
     <div class="splash-container">
@@ -47,26 +66,15 @@
             <div class="item-container">
               <div class="item-photo">
                 <img class='thumbnail' src="public/images/seafood.jpg">
-                <div class='modal' data-keyboard='false' data-backdrop='static' href='#'>
-                  <div class='modal-content'>
-                    <span class='modal-close'>&times;</span>
-                    <img class='modal-image' src="public/images/porkstew.jpg">
-                    <div class='modal-item-name'>Item Modal 1</div>
-                    <div class='modal-item-price'>Price Modal 1</div>
-                    <div class='modal-item-desc'> Modal Desc 1 </div>
-                    <div class='modal-item-quantity'>
-                      <label class='QTY'>
-                        "QTY: 1"
-                      </label>
-                    <select name='itemCount' id='itemCount'>
-                    </select>
+                  <div class="item-options-row">
+                    <button class="add-to-cart"> <em>Add to Cart</em> </button>
+
                   </div>
+                <div class="item-desc">
+                  <div class="item-name">Item 1</div>
+                  <div class="item-price">Price 1</div>
                 </div>
-              </div>
-              <div class="item-desc">
-                <div class="item-name">Item 1</div>
-                <div class="item-price">Price 1</div>
-              </div>
+            </div>
             </div>
            </div>
           <!---->
@@ -126,82 +134,7 @@
               </div>
             </div>
            </div>
-            <!---->
-           <div id="item-three">
-            <div class="item-container">
-              <div class="item-photo">
-                <img class='thumbnail' src="public/images/seafood.jpg">
-                <div class='modal'>
-                  <div class='modal-content'>
-                    <img class='modal-image' src="public/images/porkstew.jpg">
-                    <span class='modal-close'>&times;</span>
-                    <p class='modal-text'> Modal Text 5</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item-desc">
-                <div class="item-name">Item 5</div>
-                <div class="item-price">Price 5</div>
-              </div>
-            </div>
-           </div>
-            <!---->
-           <div id="item-six">
-            <div class="item-container">
-              <div class="item-photo">
-                <img class='thumbnail' src="public/images/dumpling.jpg">
-                <div class='modal'>
-                  <div class='modal-content'>
-                    <img class='modal-image' src="public/images/porkstew.jpg">
-                    <span class='modal-close'>&times;</span>
-                    <p class='modal-text'> Modal Text 6</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item-desc">
-                <div class="item-name">Item 6</div>
-                <div class="item-price">Price 6</div>
-              </div>
-            </div>
-           </div>
-            <!---->
-           <div id="item-seven">
-            <div class="item-container">
-              <div class="item-photo">
-                <img class='thumbnail' src="public/images/porkstew.jpg">
-                <div class='modal'>
-                  <div class='modal-content'>
-                    <img class='modal-image' src="public/images/porkstew.jpg">
-                    <span class='modal-close'>&times;</span>
-                    <p class='modal-text'> Modal Text 7</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item-desc">
-                <div class="item-name">Item 7</div>
-                <div class="item-price">Price 7</div>
-              </div>
-            </div>
-           </div>
-            <!---->
-           <div id="item-eight">
-            <div class="item-container">
-              <div class="item-photo">
-                <img class='thumbnail' src="public/images/seafood.jpg">
-                <div class='modal'>
-                  <div class='modal-content'>
-                    <img class='modal-image' src="public/images/porkstew.jpg">
-                    <span class='modal-close'>&times;</span>
-                    <p class='modal-text'> Modal Text 8</p>
-                  </div>
-                </div>
-              </div>
-              <div class="item-desc">
-                <div class="item-name">Item 8</div>
-                <div class="item-price">Price 8</div>
-              </div>
-            </div>
-           </div>
+            
 
 
 
@@ -215,3 +148,20 @@
 
 </body>
 </html>
+
+                <!--<div class='modal' data-keyboard='false' data-backdrop='static' href='#'>-->
+                  <!--<div class='modal-content'>
+                    <span class='modal-close'>&times;</span>
+                    <img class='modal-image' src="public/images/porkstew.jpg">
+                    <div class='modal-item-name'>Item Modal 1</div>
+                    <div class='modal-item-price'>Price Modal 1</div>
+                    <div class='modal-item-desc'> Modal Desc 1 </div>
+                    <div class='modal-item-quantity'>
+                      <label class='QTY'>
+                        "QTY: 1"
+                      </label>
+                    <select name='itemCount' id='itemCount'>
+                    </select>
+                  </div>
+                </div>-->
+              <!--</div>-->
