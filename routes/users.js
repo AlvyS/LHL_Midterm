@@ -6,7 +6,7 @@ const router  = express.Router();
 const queries = require('./queries');
 
 const twilioLibrary = require('twilio');
-const client = new twilioLibrary.Twilio(accountSid, authToken);
+// const client = new twilioLibrary.Twilio(accountSid, authToken);
 const xml = require('xml');
 
 module.exports = (knex) => {

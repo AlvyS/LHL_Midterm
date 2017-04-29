@@ -83,7 +83,7 @@ Cart button
 	right: 10px;
 	height: 50px;
 	width: 50px;
-	background: url(../img/cd-icon-cart.svg) no-repeat center center;
+	background: url(/images/cd-icon-cart.svg) no-repeat center center;
 
 	span {
 		/* number of items added to the cart */
@@ -428,7 +428,7 @@ Product Customization
 			width: 16px;
 			height: 16px;
 
-			background: url('../img/cd-icon-arrow.svg') no-repeat center center;
+			background: url('/images/cd-icon-arrow.svg') no-repeat center center;
 			pointer-events: none;
 		}
 
@@ -517,7 +517,7 @@ Settings icon - touch devices only
 	white-space: nowrap;
 	color: transparent;
 	
-	background: url(../img/cd-icon-settings.svg) no-repeat center center;
+	background: url(/images/cd-icon-settings.svg) no-repeat center center;
 	display: none;
 
 	.touch & {
