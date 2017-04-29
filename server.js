@@ -13,6 +13,18 @@ const knexConfig  = require("./knexfile");
 const knex        = knexBuilder(knexConfig[env]);
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
+const flash = require('connect-flash');
+var cookieSession = require('cookie-session');
+var cookieParser = require('cookie-parser');
+app.use(cookieSession({
+  name: 'session',
+  keys: ['lhl'],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
+app.use(cookieParser());
+
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -33,10 +45,18 @@ app.use("/styles", sass({
   outputStyle: 'expanded'
 }));
 app.use(express.static("public"));
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.flash = {
+    error: req.flash('error'),
+    info: req.flash('info')
+  }
+  next();
+});
 
 // Mount all resource routes
 app.use('/', usersRoutes(knex));
-
 // Home page
 /*app.get("/", (req, res) => {
   res.render("index");
