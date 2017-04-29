@@ -66,7 +66,7 @@ module.exports = (knex) => {
 
   // get cart details for that session.
   router.get("/checkout", (req, res) => {
-    queries.getSessionCart(knex,session_id, (item) => {
+    queries.getSessionCart(knex, (item) => {
       var allItems = {allitems :item}
       res.render('checkout', allItems);
     });
@@ -117,7 +117,7 @@ module.exports = (knex) => {
           process.stdout.write(call.sid);
         });
       }
-      //res.render('index', { error: req.flash('error') });
+      res.render('index', { error: req.flash('error') });
       res.redirect('/');
     });
 
