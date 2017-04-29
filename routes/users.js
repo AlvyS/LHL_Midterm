@@ -117,7 +117,7 @@ module.exports = (knex) => {
           process.stdout.write(call.sid);
         });
       }
-      res.render('index', { error: req.flash('error') });
+      // res.render('index', { error: req.flash('error') });
       res.redirect('/');
     });
 
