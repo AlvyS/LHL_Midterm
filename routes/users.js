@@ -74,6 +74,8 @@ module.exports = (knex) => {
 
   router.post('/message/confirmation/:orderId', (req, res) => {
   // pass a variable knex query as a result to the phone call
+        console.log("before redirect");
+
   res.header('Content-Type','text/xml').send(xml({
     Response: [{
       Say: [{ _attr: { voice: 'alice' }}, `order number ${req.params.orderId} from user, please press the expecter pick time`]
@@ -92,18 +94,30 @@ module.exports = (knex) => {
       phone : req.body.phone,
     }
     queries.placeOrder(knex, cart, (orderId) => {
+      if(orderId == null) {
+        console.log("hello before in if");
+        req.flash('error', 'your cart is empty');
+        console.log("hello before in if after");
+      } else {
+
+        console.log("before redirect");
+        req.flash('info', 'Successfully placed order');
+        console.log("before redirect");
+        client.calls.create({
+          url: 'http://' + req.headers.host + '/message/confirmation/' + orderId,
+          to: '+17782512517',
+          from: '+17787851351'
+        }, function(err, call) {
+          if (err){
+            console.log(err.message);
+          }
+          process.stdout.write(call.sid);
+        });
+      }
+      //res.render('index', { error: req.flash('error') });
       res.redirect('/');
-      client.calls.create({
-        url: 'http://' + req.headers.host + '/message/confirmation/' + orderId,
-        to: '+17782512517',
-        from: '+17787851351'
-      }, function(err, call) {
-        if (err){
-          console.log(err.message);
-        }
-        process.stdout.write(call.sid);
-      });
     });
+
   });
   return router;
 }

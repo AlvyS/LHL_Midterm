@@ -100,6 +100,7 @@ getItems: (knex, done) => {
 
   //place order
   placeOrder:(knex, sessionCart, done) => {
+
     knex('users')
     .insert({
       first_name: sessionCart.first_name,
@@ -122,20 +123,27 @@ getItems: (knex, done) => {
         .select('quantity', 'price', 'item_id')
         .from("cart")
         .then((results) => {
-          results.map( row => {
-            row.order_id = orderid[0];
-            knex('order_details')
-            .insert({ quantity: row.quantity,
-                      price: row.price,
-                      item_id: row.item_id,
-                      order_id: row.order_id
-               }).then(() => {
-                  knex('cart')
-                  .del().then(() => {
-                    done(orderid);
-                  });
-               });
-          });
+          if(results.length) {
+            results.map( row => {
+              row.order_id = orderid[0];
+              console.log("hello ");
+              knex('order_details')
+              .insert({ quantity: row.quantity,
+                        price: row.price,
+                        item_id: row.item_id,
+                        order_id: row.order_id
+                 }).then(() => {
+                    knex('cart')
+                    .del().then(() => {
+                      console.log("hello there");
+                      done(orderid);
+                    });
+                 });
+            });
+          } else {
+            console.log("in else");
+            done(null);
+          }
         });
       });
     });
