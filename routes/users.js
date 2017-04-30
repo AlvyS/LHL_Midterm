@@ -53,19 +53,20 @@ module.exports = (knex) => {
   //update cart item.
   router.post("/cart/:item_id/update", (req, res) => {
     console.log("request body is" , req.body);
-    const cart = {
-      item_id : req.params.item_id,
-      price : req.body.price,
-      quantity : req.body.quantity
-    }
-    console.log("cart in update is :", cart );
-    queries.updateCartItem(knex, cart, () => {
-      res.redirect("/cart");
-      // queries.getSessionCart(knex, (items) => {
-      //   // var allItems = {allitems :item};
+    if(req.body.quantity) {
+      const cart = {
+        item_id : req.params.item_id,
+        price : req.body.price,
+        quantity : req.body.quantity
+      }
+      console.log("cart in update is :", cart );
+      queries.updateCartItem(knex, cart, () => {
+        //res.redirect("/");
         
-      // });
-    });
+      });
+    } else {
+      //res.redirect("/");
+    }
   });
 
   router.post("/cart/:item_id/delete", (req, res) => {
@@ -76,8 +77,7 @@ module.exports = (knex) => {
     }
     queries.deleteCartItem(knex, cart, () => {
       queries.getSessionCart(knex, (items) => {
-        // var allItems = {allitems :item};
-        res.render('cart', {items : items});
+        //res.redirect("/");
       });
     });
   });
