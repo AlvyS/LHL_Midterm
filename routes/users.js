@@ -87,16 +87,11 @@ module.exports = (knex) => {
   });
 
   router.post("/placeorder", (req, res, next) => {
-    console.log(req.body.firstname);
-    console.log(req.body.lastname);
-    console.log(req.body.phone);
     if (!req.body.firstname || !req.body.lastname || !req.body.phone === '') {
       req.flash('error', 'first name, last name and phone number are required');
       res.redirect('/checkout');
       return;
     } else {
-
-      console.log('no err');
       const cart = {
         price : req.body.price,
         quantity : req.body.quantity,
