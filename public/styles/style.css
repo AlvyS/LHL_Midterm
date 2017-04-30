@@ -164,6 +164,8 @@ Cart Container
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
 }
 
 #cart-container .modal-cart .modal-cart-close:hover, #cart-container .modal-cart .modal-cart-close:focus {
@@ -175,6 +177,8 @@ Cart Container
 #cart-container .modal-cart .checkout-row {
   position: absolute;
   background-color: #2b2e2f;
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
   width: 100%;
   bottom: 0%;
   left: 0%;
@@ -184,7 +188,7 @@ Cart Container
   float: right;
   background-color: #46b29d;
   border: none;
-  color: #FFFFFF;
+  color: #2b2e2f;
   text-align: center;
   font-size: 1em;
   height: 2.5em;
@@ -193,6 +197,8 @@ Cart Container
   transition: all 0.5s;
   cursor: pointer;
   margin: 5px;
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: 1em;
 }
 
 #cart-container .modal-cart .checkout-button span {
@@ -213,6 +219,7 @@ Cart Container
 
 #cart-container .modal-cart .checkout-button:hover span {
   padding-right: 1em;
+  color: #ffffff;
 }
 
 #cart-container .modal-cart .checkout-button:hover span:after {
@@ -787,15 +794,17 @@ Product Info (title + price)
 
 .cd-item-info b {
   float: left;
+  font-size: 1em;
 }
 
 .cd-item-info em {
   float: right;
-  padding-left: 2em;
+  font-size: 1.5em;
   color: #5484a0;
 }
 
 .cd-item-info a {
+  font-size: 1.5em;
   color: #314d5d;
 }
 
