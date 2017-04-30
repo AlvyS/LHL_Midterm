@@ -15,7 +15,7 @@
         </div>
         <div class="col-sm-8 col-md-8 col-lg-8">
           <div class="row">
-            <form>
+        <form action="/placeorder" method="POST">
         <% if(allitems){  %>
           <% allitems.forEach( (item) => {  %>
               <div class="form-group">
@@ -49,106 +49,21 @@
                 </div>
               <%        } %>
                 <div class="row">
-                  <div class="col-xs-6 col-md-6 col-lg-6">
-                    <button type="submit" class="btn btn-default" formmethod="POST" formaction="/placeorder" >Place Order</button>
+                  <div class="columns large-3">
+                    <% if(allitems.length === 0) { %>
+                      <p> YOUR CART IS EMPTY </p>
+                    <% } else { %>
                   </div>
                   <div class="col-xs-6 col-md-6 col-lg-6">
                     <a href="/" class="btn btn-info" role="button">Cancel</a>
                   </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </span>
-  </div>
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mid Term Project</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway+Sans:400,600,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation-site.min.css">
-  <script src="/scripts/modernizr.js"></script> <!-- Modernizr -->
-</head>
-<body>
-  <div id="content" class="row">
-
-    <div class="columns large-5">
-      <div class="row">
-        <div class="columns medium-6">User Name</div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="columns medium-6">Phone Number</div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="columns medium-6">Order Date</div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="columns medium-6">Restaurant Adddress</div>
-      </div>
-    </div>
-    <div class="columns large-"7>
-      <form action="/placeorder" method="POST">
-        <div class="row">
-          <div class="columns large-3">
-            <p>Qauntity</p>
-          </div>
-          <div class="columns large-3">
-            <p>Item_Name</p>
-          </div>
-          <div class="columns large-3">
-            <p>Price</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-6 columns">
-            <label>First Name
-              <input type="text" id="firstname" name="firstname" placeholder="">
-            </label>
-          </div>
-          <div class="large-6 columns">
-            <label>Last Name
-              <input type="text" id="lastname" name="lastname" placeholder="">
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Phone Number
-              <input type="tel" id="phone" name="phone" placeholder="">
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="columns large-10">
-          </div>
-          <div class="columns large-2">
-            <p>Total</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="columns large-3">
-            <% if(allitems.length === 0) { %>
-              <p> YOUR CART IS EMPTY </p>
-            <% } else { %>
-          </div>
-          <div class="columns large-9">
-            <a href="/" class="button secondary">Cancel</a>
-          </div>
-          <div>
-          </div>
-          <% var total= 0 %>
-          <% if(items) { %>
-            <% items.forEach( (item) => { %>
-              <% total += item.price * item.quantity %>
-            <% }); %>
-          <% } %>
-          <% total *= 100 %>
+                    <% var total= 0 %>
+                    <% if(allitems) { %>
+                      <% allitems.forEach( (item) => { %>
+                        <% total += item.price * item.quantity %>
+                      <% }); %>
+                    <% } %>
+                    <% total *= 100 %>
           <script
           src="https://checkout.stripe.com/checkout.js"
           class="stripe-button"
@@ -162,6 +77,10 @@
           <input type="hidden" name="chargeAmount" value=<%=total%>>
           </form>
           <% } %>
-
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
 </body>
 </html>
