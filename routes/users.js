@@ -28,7 +28,7 @@ module.exports = (knex) => {
       quantity : req.body.quantity
     }
     queries.addItemToCart(knex, cart, () => {
-
+      res.redirect('/');
     });
   });
 
@@ -50,11 +50,11 @@ module.exports = (knex) => {
     }
     console.log("cart in update is :", cart );
     queries.updateCartItem(knex, cart, () => {
-
-      queries.getSessionCart(knex, (items) => {
-        // var allItems = {allitems :item};
-        res.render('cart', {items : items});
-      });
+      res.redirect("/cart");
+      // queries.getSessionCart(knex, (items) => {
+      //   // var allItems = {allitems :item};
+        
+      // });
     });
   });
 
@@ -75,7 +75,11 @@ module.exports = (knex) => {
   // get cart details for that session.
   router.get("/checkout", (req, res) => {
     queries.getSessionCart(knex, (items) => {
-      res.render('checkout', {items : items});
+      let total = 0;
+      items.forEach( (item) => {
+        total += (item.price*item.quantity);
+      });
+      res.render('checkout', {allitems: items, total:total} );
     });
   });
 

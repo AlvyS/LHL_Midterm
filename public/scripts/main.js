@@ -157,4 +157,12 @@ jQuery(document).ready(function(){
  //  }
 
 	// loadItems();
+
+	function calculateTotal(items){
+		let result = 0;
+		items.forEach( (item) => {
+			result += (item.price*item.quantity);
+		});
+		return result;
+	}
 });

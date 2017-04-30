@@ -1,5 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
+  <%- include partials/_head.ejs %>
+<body>
+  <%- include partials/_header.ejs %>
+  <div class="container-fluid">
+    <span class="center-block">
+      <div class="row">
+
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <p>User Name</p>
+          <p>Phone Number</p>
+          <p>Order Date</p>
+          <p>Restaurant Address</p>
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+          <div class="row">
+            <form>
+        <% if(allitems){  %>
+          <% allitems.forEach( (item) => {  %>
+              <div class="form-group">
+                <div class="row">
+                  <div class="row col-md-4 form-group">
+                    <p>Quantity</p>
+                    <p>Item Name</p>
+                    <p>Price</p>
+                  </div>
+                  <div class="row col-md-4 form-group">
+                    <p class="form-control" name="quantity"><%= item.quantity %></p>
+                    <p><%= item.name %></p>
+                    <p class="form-control"><%= item.price %></p>
+                  </div>
+                </div>
+              </div>
+              <%          }); %>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstname" f>First Name</label>
+                  <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="phone">
+                </div>
+                <div class="form-group">
+                  <span>Total: <p class="form-control" name="total"><%= total %></p></span>
+                </div>
+              <%        } %>
+                <div class="row">
+                  <div class="col-xs-6 col-md-6 col-lg-6">
+                    <button type="submit" class="btn btn-default" formmethod="POST" formaction="/placeorder" >Place Order</button>
+                  </div>
+                  <div class="col-xs-6 col-md-6 col-lg-6">
+                    <a href="/" class="btn btn-info" role="button">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </span>
+  </div>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,7 +133,7 @@
         </div>
         <div class="row">
           <div class="columns large-3">
-            <% if(items.length === 0) { %>
+            <% if(allitems.length === 0) { %>
               <p> YOUR CART IS EMPTY </p>
             <% } else { %>
           </div>
@@ -101,7 +165,3 @@
 
 </body>
 </html>
-
-
-
-
