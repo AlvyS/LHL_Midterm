@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
   <%- include partials/_head.ejs %>
 <body>
   <%- include partials/_header.ejs %>
@@ -64,5 +65,104 @@
     </span>
   </div>
 
+=======
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mid Term Project</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway+Sans:400,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation-site.min.css">
+  <script src="/scripts/modernizr.js"></script> <!-- Modernizr -->
+</head>
+<body>
+  <div id="content" class="row">
+
+    <div class="columns large-5">
+      <div class="row">
+        <div class="columns medium-6">User Name</div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="columns medium-6">Phone Number</div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="columns medium-6">Order Date</div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="columns medium-6">Restaurant Adddress</div>
+      </div>
+    </div>
+    <div class="columns large-"7>
+      <form action="/placeorder" method="POST">
+        <div class="row">
+          <div class="columns large-3">
+            <p>Qauntity</p>
+          </div>
+          <div class="columns large-3">
+            <p>Item_Name</p>
+          </div>
+          <div class="columns large-3">
+            <p>Price</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns">
+            <label>First Name
+              <input type="text" id="firstname" name="firstname" placeholder="">
+            </label>
+          </div>
+          <div class="large-6 columns">
+            <label>Last Name
+              <input type="text" id="lastname" name="lastname" placeholder="">
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <label>Phone Number
+              <input type="tel" id="phone" name="phone" placeholder="">
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="columns large-10">
+          </div>
+          <div class="columns large-2">
+            <p>Total</p>
+          </div>
+        </div>
+        <div class="row">
+          <p> hiiiiiiii <%= items %> </p>
+          <div class="columns large-3">
+            <% if(items.length === 0) { %>
+              <p> YOUR CART IS EMPTY </p>
+            <% } else { %>
+              <input type='submit' class="button">Place Order and pay at the restaurant</input>
+            <% } %>
+          </div>
+          <div class="columns large-9">
+            <a href="/" class="button secondary">Cancel</a>
+          </div>
+        </div><p><%=allitems.price%></p>
+          <div>
+          <%= flash.error %>
+          </div>
+
+
+          <script
+          src="https://checkout.stripe.com/checkout.js"
+          class="stripe-button"
+          data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz"
+          data-amount =<%=allitems.price%>
+          data-name = "purchase-items"
+          data-discription = "pizza, salad"
+          data-local ="auto"
+          data-curruncy ="cad">
+          </script>
+          <input type="hidden" name="chargeAmount" value="3000">
+          </form>
+>>>>>>> 386bf85ee9d037129c9d27d7e9cc81da7ac73d7b
 </body>
 </html>

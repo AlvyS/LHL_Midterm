@@ -52,11 +52,12 @@
    </div>
  </form>
   <div class="row"><h2>Cart</h2></div>
+
   <% var total= 0 %>
   <% if(items) { %>
 
     <% items.forEach( (item) => { %>
-      <form action="/cart/<%= item.item_id %>/update" method="POST">
+      <form>
             <% total += item.price * item.quantity %>
             <%= total %>
             <div class="row">
@@ -64,7 +65,7 @@
                 <h3> <%= item.name %> </h3>
               </div>
               <div class="column small-12 medium-4">
-                <h3 name = "quantity"> <%= item.quantity %> </h3>
+                <h3> <%= item.quantity %> </h3>
               </div>
               <div class="column small-12 medium-5">
                 <h3 name = "price"> <%= item.price %> </h3>
@@ -73,12 +74,16 @@
         <div class="row">
           <div class="column small-12 medium-3">
               <div class="input-group">
-              <input class="input-group-field" type="number" for="button primary">
+              <input class="input-group-field" name = "quantity" type="number" for="btn btn-default">
             </div>
           </div>
           <div class="column small-12 medium-9">
             <h3 name="total">Total: <%= total %> </h3>
           </div>
+        </div>
+        <div class="row">
+          <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/<%= item.item_id %>/update" >Edit</button>
+          <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/<%= item.item_id %>/delete" >Remove</button>
         </div>
         <div class="row">
           <div class="column small-12 medium-3">
