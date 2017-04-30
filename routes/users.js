@@ -94,8 +94,6 @@ module.exports = (knex) => {
       res.redirect('/checkout');
       return;
     } else {
-
-      console.log('no err');
       const cart = {
         price : req.body.price,
         quantity : req.body.quantity,
