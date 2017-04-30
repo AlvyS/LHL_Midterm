@@ -9,7 +9,7 @@ var Promise = require('promise');
 // const util    = require('/script/main');
 
 const twilioLibrary = require('twilio');
-// const client = new twilioLibrary.Twilio(accountSid, authToken);
+const client = new twilioLibrary.Twilio(accountSid, authToken);
 const xml = require('xml');
 
 module.exports = (knex) => {
@@ -95,11 +95,13 @@ module.exports = (knex) => {
    }));
   });
 
-  //place order
-  //flash_order
+
   router.post("/placeorder", (req, res) => {
-    console.log("hi",req.body.firstname);
-    const cart = {
+    console.log('Test first name: ', req.body.firstname);
+    if (req.body.firstname || !req.body.lastname || !req.body.phone) {
+    req.flash('errors', 'email and password are required');
+  }
+  const cart = {
       price : req.body.price,
       quantity : req.body.quantity,
       first_name : req.body.firstname,
@@ -127,7 +129,7 @@ module.exports = (knex) => {
           process.stdout.write(call.sid);
         });
       }
-      //res.render('index', { error: req.flash('error') });
+      // res.render('index', { error: req.flash('error') });
       res.redirect('/');
     });
 

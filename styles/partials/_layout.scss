@@ -25,3 +25,68 @@ $L:     1100px;
   float: $float-direction;
 }
 
+@keyframes animScale {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0) scale3d(0.1, 0.6, 1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+  }
+}
+
+@media only screen and (max-width: 40em) {
+  p, a, h1, h2, h3 {
+    text-align: center;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  h3 {
+    margin: 30px 0 40px 0;
+  }
+
+  .pad {
+    padding: 1.2em;
+  }
+  canvas {
+    height: 100%;
+  }
+}
+
+@-webkit-keyframes enlarge {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  40% {
+    -webkit-transform: scale(1.11);
+    transform: scale(1.11);
+  }
+
+  100% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}
+
+
+@keyframes enlarge {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  40% {
+    -webkit-transform: scale(1.11);
+    transform: scale(1.11);
+  }
+
+  100% {
+    -webkit-transform: scale(1.05);
+    transform: scale(1.05);
+  }
+}

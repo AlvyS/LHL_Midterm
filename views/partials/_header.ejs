@@ -1,16 +1,32 @@
   <div class="row">
     <header>
-        <img src="/images/menu.svg" alt="menu">
+        <!--Cart-->
+        <div id='cart-container'>
+          <div class="cart-image"><i class="fa fa-shopping-cart fa-lg"></i></div>
+          <div class='modal-cart'>
+              <div class='modal-cart-content'>
+                <form method='GET' action='/checkout/'>>
+                  <div class="checkout-row">
+                    <span class='modal-cart-close'>Close</span>
+                    <button class="checkout-button"> <i class="fa fa-shopping-cart fa-lg"></i><span> Checkout Now! </span></button>
+                  </div>
+                </form>
+          <!--Cart End-->
+              </div>
+            </div>
+          </div>
+        </div>   
     </header>
   </div>
 
-  <div class="row">
+<!--  <div class="row">
     <div class="splash-container">
         <div class="splash">
             <h1 class="splash-head">Food ToGo</h1>
             <input type="text" id="search" placeholder="Search">
-            <video autoplay loop poster="public/images/splash_top.jpg" id="bgvid">
+            <video autoplay loop poster="/images/splash_top.jpg" id="bgvid">
                 <source src="/images/splash_top.jpg" type="video/mp4">
             </video>
         </div>
     </div>
+-->
