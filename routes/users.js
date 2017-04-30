@@ -5,15 +5,11 @@ const express = require('express');
 const router  = express.Router();
 const queries = require('./queries');
 
-// const util    = require('/script/main');
-
 const twilioLibrary = require('twilio');
 const client = new twilioLibrary.Twilio(accountSid, authToken);
 const xml = require('xml');
-
+const stripe = require('stripe')('sk_test_oiTiaepjGnO00M29MV7vde0y');
 module.exports = (knex) => {
-
-  //get home page with all menu list
   router.get("/", (req, res) => {
     //res.render('index', items);
     var allItems;
@@ -24,10 +20,7 @@ module.exports = (knex) => {
     });
   });
 
-
-  //add item of particular session into cart.
-  //flash message added to car
-
+  //add item of particular session into cart
   router.post("/cart/:item_id/add", (req, res) => {
     const cart = {
       item_id : req.params.item_id,
@@ -84,55 +77,72 @@ module.exports = (knex) => {
     });
   });
 
+  // twilio API
   router.post('/message/confirmation/:orderId', (req, res) => {
-  // pass a variable knex query as a result to the phone call
-        console.log("before redirect");
-
-  res.header('Content-Type','text/xml').send(xml({
-    Response: [{
-      Say: [{ _attr: { voice: 'alice' }}, `order number ${req.params.orderId} from user, please press the expecter pick time`]
-    }]
-   }));
+    res.header('Content-Type','text/xml').send(xml({
+      Response: [{
+        Say: [{ _attr: { voice: 'alice' }}, `order number ${req.params.orderId} from user, please press the expecter pick time`]
+      }]
+    }));
   });
 
+  router.post("/placeorder", (req, res, next) => {
+    console.log(req.body.firstname);
+    console.log(req.body.lastname);
+    console.log(req.body.phone);
+    if (!req.body.firstname || !req.body.lastname || !req.body.phone === '') {
+      req.flash('error', 'first name, last name and phone number are required');
+      res.redirect('/checkout');
+      return;
+    } else {
 
-  router.post("/placeorder", (req, res) => {
-    console.log('Test first name: ', req.body.firstname);
-    if (req.body.firstname || !req.body.lastname || !req.body.phone) {
-    req.flash('errors', 'email and password are required');
-  }
-  const cart = {
-      price : req.body.price,
-      quantity : req.body.quantity,
-      first_name : req.body.firstname,
-      last_name : req.body.lastname,
-      phone : req.body.phone,
-    }
-    queries.placeOrder(knex, cart, (orderId) => {
-      if(orderId == null) {
-        console.log("hello before in if");
-        req.flash('error', 'your cart is empty');
-        console.log("hello before in if after");
-      } else {
-
-        console.log("before redirect");
-        req.flash('info', 'Successfully placed order');
-        console.log("before redirect");
-        client.calls.create({
-          url: 'http://' + req.headers.host + '/message/confirmation/' + orderId,
-          to: '+17782512517',
-          from: '+17787851351'
-        }, function(err, call) {
-          if (err){
-            console.log(err.message);
-          }
-          process.stdout.write(call.sid);
-        });
+      console.log('no err');
+      const cart = {
+        price : req.body.price,
+        quantity : req.body.quantity,
+        first_name : req.body.firstname,
+        last_name : req.body.lastname,
+        phone : req.body.phone,
       }
-      // res.render('index', { error: req.flash('error') });
-      res.redirect('/');
-    });
-
+      queries.placeOrder(knex, cart, (orderId) => {
+        if(orderId == null) {
+          req.flash('error', 'Cart is empty!');
+          res.redirect('/checkout');
+        } else {
+        console.log('Twilio');
+        client.calls.create({
+        url: 'http://' + req.headers.host + '/message/confirmation/' + orderId,
+        to: '+17782512517',
+        from: '+17787851351'
+      }, function(err, call) {
+        if (err){
+          console.log(err.message);
+        }
+        process.stdout.write(call.sid);
+      }
+      );
+      //Stripe API
+      var token = req.body.stripeToken;
+      console.log(token);
+      var chargeAmount = req.body.chargeAmount;
+      var cherge = stripe.charges.create({
+        amount: chargeAmount,
+        curruncy: 'cad',
+        source : token
+      },
+      function(err, charge){
+        if (err & err.type === 'StripeCardError'){
+          console.log('Your card was decliend');
+        }
+      });
+      // req.flash('info', 'The order has been placed successfully. You will recive a a detailed text shortly');
+      res.render('paysuccess');
+        }
+      });
+    }
   });
   return router;
 }
+
+
+
