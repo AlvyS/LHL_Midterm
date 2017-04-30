@@ -3,6 +3,9 @@
 <%- include partials/_head.ejs %>
 <body>
 <%- include partials/_header.ejs %>
+<div class="container">
+
+
  <div class="row"><h2>Cart</h2></div>
  <% var total= 0 %>
    <% if(items) { %>
@@ -90,5 +93,6 @@
       </form>
     <% }); %>
   <% } %>
+  </div>
 </body>
 </html>

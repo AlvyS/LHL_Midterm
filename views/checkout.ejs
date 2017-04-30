@@ -1,168 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mid Term Project</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway+Sans:400,600,700" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.3.1/css/foundation-site.min.css">
-  <link rel="stylesheet" href="/styles/style.css">
-	<script src="/scripts/modernizr.js"></script> <!-- Modernizr -->
-</head>
+  <%- include partials/_head.ejs %>
 <body>
-  <div id="content" class="row">
-<<<<<<< HEAD
-    <div class="columns large-5">
+  <%- include partials/_header.ejs %>
+  <div class="container-fluid">
+    <span class="center-block">
       <div class="row">
-        <div class="columns medium-6">User Name</div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="columns medium-6">Phone Number</div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="columns medium-6">Order Date</div>
-      </div>
-      <br>
-      <div class="row">
-        <div class="columns medium-6">Restaurant Adddress</div>
-      </div>
-    </div>
-    <div class="columns large-"7>
-      <form action="/placeorder" method="POST">
-        <div class="row">
-          <div class="columns large-3">
-            <p>Qauntity</p>
-          </div>
-          <div class="columns large-3">
-            <p>Item_Name</p>
-          </div>
-          <div class="columns large-3">
-            <p>Price</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-6 columns">
-            <label>First Name
-              <input type="text" placeholder="">
-            </label>
-          </div>
-          <div class="large-6 columns">
-            <label>Last Name
-              <input type="text" placeholder="">
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="large-12 columns">
-            <label>Phone Number
-              <input type="text" placeholder="">
-            </label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="columns large-10">
-          </div>
-          <div class="columns large-2">
-            <p>Total</p>
-          </div>
-        </div>
-        <div class="row">
-          <div class="columns large-3">
-            <input type='submit' class="button">Place Order and pay at the restaurant</input>
-          </div>
-          <div class="columns large-9">
-            <a href="/" class="button secondary">Cancel</a>
-          </div>
-        </div>
-      </form>
 
-    <div class="row">
-    <div class="small-12 columns">
-      <label>Number Required
-        <input type="text" placeholder="1234" aria-describedby="exampleHelpText" required pattern="number">
-        <span class="form-error">
-          Yo, you had better fill this out, it's required.
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpText">Here's how you use this input field!</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Nothing Required!
-        <input type="text" placeholder="Use me, or don't" aria-describedby="exampleHelpTex" data-abide-ignore>
-      </label>
-      <p class="help-text" id="exampleHelpTex">This input is ignored by Abide using `data-abide-ignore`</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Password Required
-        <input type="password" id="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText" required >
-        <span class="form-error">
-          I'm required!
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpText">Enter a password please.</p>
-    </div>
-    <div class="small-12 columns">
-      <label>Re-enter Password
-        <input type="password" placeholder="yeti4preZ" aria-describedby="exampleHelpText2" required pattern="alpha_numeric" data-equalto="password">
-        <span class="form-error">
-          Hey, passwords are supposed to match!
-        </span>
-      </label>
-      <p class="help-text" id="exampleHelpText2">This field is using the `data-equalto="password"` attribute, causing it to match the password field above.</p>
-    </div>
+        <div class="col-sm-4 col-md-4 col-lg-4">
+          <p>User Name</p>
+          <p>Phone Number</p>
+          <p>Order Date</p>
+          <p>Restaurant Address</p>
+        </div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+          <div class="row">
+            <form>
+        <% if(allitems){  %>
+          <% allitems.forEach( (item) => {  %>
+              <div class="form-group">
+                <div class="row">
+                  <div class="row col-md-4 form-group">
+                    <p>Quantity</p>
+                    <p>Item Name</p>
+                    <p>Price</p>
+                  </div>
+                  <div class="row col-md-4 form-group">
+                    <p class="form-control" name="quantity"><%= item.quantity %></p>
+                    <p><%= item.name %></p>
+                    <p class="form-control"><%= item.price %></p>
+                  </div>
+                </div>
+              </div>
+              <%          }); %>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="firstname" f>First Name</label>
+                  <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
+                  <label for="lastname">Last Name</label>
+                  <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name">
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="text" class="form-control" id="phone" name="phone" placeholder="phone">
+                </div>
+                <div class="form-group">
+                  <span>Total: <p class="form-control" name="total"><%= total %></p></span>
+                </div>
+              <%        } %>
+                <div class="row">
+                  <div class="col-xs-6 col-md-6 col-lg-6">
+                    <button type="submit" class="btn btn-default" formmethod="POST" formaction="/placeorder" >Place Order</button>
+                  </div>
+                  <div class="col-xs-6 col-md-6 col-lg-6">
+                    <a href="/" class="btn btn-info" role="button">Cancel</a>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </span>
   </div>
-  <div class="row">
-    <div class="medium-6 columns">
-      <label>URL Pattern, not required, but throws error if it doesn't match the Regular Expression for a valid URL.
-        <input type="text" placeholder="http://foundation.zurb.com" pattern="url">
-      </label>
-    </div>
-    <div class="medium-6 columns">
-      <label>European Cars, Choose One, it can't be the blank option.
-        <select id="select" required>
-          <option value=""></option>
-          <option value="volvo">Volvo</option>
-          <option value="saab">Saab</option>
-          <option value="mercedes">Mercedes</option>
-          <option value="audi">Audi</option>
-        </select>
-      </label>
-
-    </div>
-  </div>
-  <div class="row">
-    <fieldset class="large-6 columns">
-      <legend>Choose Your Favorite, and this is required, so you have to pick one.</legend>
-      <input type="radio" name="pokemon" value="Red" id="pokemonRed"><label for="pokemonRed">Red</label>
-      <input type="radio" name="pokemon" value="Blue" id="pokemonBlue" required><label for="pokemonBlue">Blue</label>
-      <input type="radio" name="pokemon" value="Yellow" id="pokemonYellow"><label for="pokemonYellow">Yellow</label>
-    </fieldset>
-    <fieldset class="large-6 columns">
-      <legend>Choose Your Favorite - not required, you can leave this one blank.</legend>
-      <input type="radio" name="pockets" value="Red" id="pocketsRed"><label for="pocketsRed">Red</label>
-      <input type="radio" name="pockets" value="Blue" id="pocketsBlue"><label for="pocketsBlue">Blue</label>
-      <input type="radio" name="pockets" value="Yellow" id="pocketsYellow"><label for="pocketsYellow">Yellow</label>
-    </fieldset>
-    <fieldset class="large-6 columns">
-      <legend>Check these out</legend>
-      <input id="checkbox1" type="checkbox"><label for="checkbox1">Checkbox 1</label>
-      <input id="checkbox2" type="checkbox" required><label for="checkbox2">Checkbox 2</label>
-      <input id="checkbox3" type="checkbox"><label for="checkbox3">Checkbox 3</label>
-    </fieldset>
-  </div>
-  <div class="row">
-    <fieldset class="large-6 columns">
-      <button class="button" type="submit" value="Submit">Submit</button>
-    </fieldset>
-    <fieldset class="large-6 columns">
-      <button class="button" type="reset" value="Reset">Reset</button>
-    </fieldset>
-  </div>
-</form>
-  </div>
-
 
 </body>
 </html>
