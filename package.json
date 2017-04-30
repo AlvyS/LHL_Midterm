@@ -29,7 +29,8 @@
     "nodeman": "^1.1.2",
     "nodemon": "^1.11.0",
     "pg": "^6.1.5",
-    "twilio": "^3.0.0-rc16",
+    "promise": "^7.1.1",
+    "twilio": "^3.0.0-rc.16",
     "xml": "^1.0.1"
   },
   "devDependencies": {

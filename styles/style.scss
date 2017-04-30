@@ -296,6 +296,49 @@ Single Item
 			display: none;
 		}
 	}
+<<<<<<< HEAD
+=======
+}
+
+/* -------------------------------- 
+Product Slider
+-------------------------------- */
+
+.cd-slider-wrapper {
+	position: relative;
+	overflow: hidden;
+
+	li {
+		position: absolute;
+		top: 0;
+		left: 0;
+		visibility: hidden;
+		
+		/* Force Hardware Acceleration in WebKit */
+		@include transform(translateZ(0));
+		@include backface-visibility(hidden);
+		
+		/* by default, move the product image on the right*/
+		@include transform(translateX(100%));
+		@include transition(transform .3s 0s, visibility 0s .3s);
+
+		&.selected {
+			/* this is the visible product image */
+			position: relative;
+			visibility: visible;
+			z-index: 1;
+
+			@include transform(translateX(0));
+			@include transition(transform .3s 0s, visibility 0s 0s);
+		}
+
+		&.move-left {
+			/* move the product image on the left */
+			@include transform(translateX(-100%));
+		}
+	}
+
+>>>>>>> 4385e9f37181fce286bd3e3cc470aa8e4b0d3490
 	img {
 		width: 100%;
 		@include border-radius(4px);
@@ -598,6 +641,7 @@ Product Info (title + price)
 
 	em {
 		float: right;
+		padding-left: 2em;
 		color: lighten($navy, 20%);
 	}
 
@@ -607,6 +651,9 @@ Product Info (title + price)
 		&:hover {
 			text-decoration: underline;
 		}
+	}
+	.item-desc {
+		display: none;
 	}
 }
 
