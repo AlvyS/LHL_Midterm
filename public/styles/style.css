@@ -805,6 +805,11 @@ Product Info (title + price)
 
 .cd-item-info .item-desc {
   display: none;
+  font-size: 1em;
+  padding: .2em .5em .2em .5em;
+  border-radius: .5em;
+  color: #ffffff;
+  background-color: #2b2e2f;
 }
 
 .content {

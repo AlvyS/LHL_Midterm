@@ -666,6 +666,11 @@ Product Info (title + price)
 	}
 	.item-desc {
 		display: none;
+		font-size: 1em;
+		padding: .2em .5em .2em .5em;
+		border-radius: .5em;
+		color: $white;
+		background-color: $black;
 	}
 }
 
