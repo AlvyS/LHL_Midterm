@@ -15,6 +15,7 @@ $('.modal-close').on('click', function(event) {
 });
 
 
+
 // //--------------
 $('.checkout-row').on('click', function(event) {
   $('.checkout-row').toggleClass('active');

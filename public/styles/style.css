@@ -71,6 +71,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Raleway Sans", sans-serif;
+  padding-top: 5%;
   color: #314d5d;
   background-color: #f2f2f2;
 }
@@ -122,26 +123,11 @@ header h1 {
 }
 
 /* -------------------------------- 
+Nav Bar
+-------------------------------- */
+/* -------------------------------- 
 Cart Container
 -------------------------------- */
-#cart-container {
-  float: right;
-  height: 100%;
-  width: 5%;
-  padding: 1em 0em 1em 1.5em;
-  cursor: pointer;
-  background-color: #46b29d;
-  box-sizing: border-box;
-}
-
-#cart-container:hover {
-  background-color: #de5b48;
-}
-
-#cart-container .cart-image i {
-  color: #ffffff;
-}
-
 #cart-container .modal-cart {
   position: relative;
   display: none;
@@ -149,7 +135,7 @@ Cart Container
 }
 
 #cart-container .modal-cart .modal-cart-content {
-  background-color: #f0ca4d;
+  background-color: #ffffff;
   border-radius: 1em;
   -webkit-border-radius: 1em;
   -moz-border-radius: 1em;
@@ -159,7 +145,7 @@ Cart Container
   margin: -10em 0 0 -13em;
   padding: .1em;
   position: fixed;
-  top: 40%;
+  top: 50%;
   right: 5%;
   height: 70%;
   width: 30%;
@@ -173,7 +159,7 @@ Cart Container
   color: #FFFFFF;
   text-align: center;
   font-size: 1em;
-  height: 4em;
+  height: 2em;
   padding: 1.2em;
   width: 5em;
   transition: all 0.5s;
@@ -302,6 +288,7 @@ Gallery grid
   width: 90%;
   max-width: 1100px;
   margin: 1.5em auto;
+  list-style: none;
 }
 
 .cd-gallery > li {
