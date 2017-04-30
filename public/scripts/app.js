@@ -54,4 +54,29 @@ $('.cd-item-info').on('click', '.info-container', function(event) {
   // });
 
 // //------------------------------------------------------------------------------------------------------------------------
+
+
+function getCartItems() {
+  var $infoModal = $('#cart-container');
+  $('.cart-button').on('click', function(){
+      $.ajax({
+          type: "GET",
+          url: '/cart',
+          dataType: 'json',
+          error: function(items){
+              fakeResponse = {"id":4,"menu_category_id":446,"name":"kunzereichert","description":"Dolores impedit ut doloribus et a et aut.","price":"999.99","created_at":"2015-04-10 05:55:23","updated_at":"2015-04-10 05:55:23"}
+;
+              var htmlData = '<ul><li>';
+              htmlData += fakeResponse.name;
+              htmlData += '</li></ul>';
+              for(let item of items){
+                console.log(`dsaflksafljdlsa`);
+                $('.modal-cart-items')[0].innerHTML = item;
+              }
+              infoModal.modal();
+          }
+      });
+  });
+}
+
 });

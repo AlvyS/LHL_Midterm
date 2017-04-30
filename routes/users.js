@@ -4,6 +4,7 @@ const authToken = 'a4e733253376adf9048714637f32996f';
 const express = require('express');
 const router  = express.Router();
 const queries = require('./queries');
+const app = require('/scripts/app')
 
 const twilioLibrary = require('twilio');
 const client = new twilioLibrary.Twilio(accountSid, authToken);
@@ -36,7 +37,9 @@ module.exports = (knex) => {
   router.get("/cart", (req, res) => {
     queries.getSessionCart(knex, (items) => {
      // var allItems = {allitems :item};
-      res.render('cart', {items : items});
+
+      app.getCartItems(items);
+      // res.render('cart', {items : items});
     });
   });
 
