@@ -136,22 +136,32 @@
             <% if(allitems.length === 0) { %>
               <p> YOUR CART IS EMPTY </p>
             <% } else { %>
-              <script
-                src="https://checkout.stripe.com/checkout.js"
-                class="stripe-button"
-                data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz"
-                data-amount =<%=allitems.price%>
-                data-name = "purchase-items"
-                data-discription = "pizza, salad"
-                data-local ="auto"
-                data-curruncy ="cad">
-              </script>
-            <% } %>
           </div>
           <div class="columns large-9">
             <a href="/" class="button secondary">Cancel</a>
-          </div>      
-          <input type="hidden" name="chargeAmount" value="3000">
-        </form>
+          </div>
+          <div>
+          </div>
+          <% var total= 0 %>
+          <% if(items) { %>
+            <% items.forEach( (item) => { %>
+              <% total += item.price * item.quantity %>
+            <% }); %>
+          <% } %>
+          <% total *= 100 %>
+          <script
+          src="https://checkout.stripe.com/checkout.js"
+          class="stripe-button"
+          data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz"
+          data-amount =<%=total%>
+          data-name = "purchase-items"
+          data-discription = "pizza, salad"
+          data-local ="auto"
+          data-curruncy ="cad">
+          </script>
+          <input type="hidden" name="chargeAmount" value=<%=total%>>
+          </form>
+          <% } %>
+
 </body>
 </html>
