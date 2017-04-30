@@ -68,34 +68,26 @@
           </div>
         </div>
         <div class="row">
-          <p> hiiiiiiii <%= items %> </p>
           <div class="columns large-3">
             <% if(items.length === 0) { %>
               <p> YOUR CART IS EMPTY </p>
             <% } else { %>
-              <input type='submit' class="button">Place Order and pay at the restaurant</input>
+              <script
+                src="https://checkout.stripe.com/checkout.js"
+                class="stripe-button"
+                data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz"
+                data-amount =<%=items.price%>
+                data-name = "purchase-items"
+                data-discription = "pizza, salad"
+                data-local ="auto"
+                data-curruncy ="cad">
+              </script>
             <% } %>
           </div>
           <div class="columns large-9">
             <a href="/" class="button secondary">Cancel</a>
-          </div>
-        </div><p><%=allitems.price%></p>
-          <div>
-          <%= flash.error %>
-          </div>
-
-
-          <script
-          src="https://checkout.stripe.com/checkout.js"
-          class="stripe-button"
-          data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz"
-          data-amount =<%=allitems.price%>
-          data-name = "purchase-items"
-          data-discription = "pizza, salad"
-          data-local ="auto"
-          data-curruncy ="cad">
-          </script>
+          </div>      
           <input type="hidden" name="chargeAmount" value="3000">
-          </form>
+        </form>
 </body>
 </html>

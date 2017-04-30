@@ -28,7 +28,7 @@ module.exports = (knex) => {
       quantity : req.body.quantity
     }
     queries.addItemToCart(knex, cart, () => {
-
+      res.redirect('/');
     });
   });
 
@@ -50,11 +50,11 @@ module.exports = (knex) => {
     }
     console.log("cart in update is :", cart );
     queries.updateCartItem(knex, cart, () => {
-
-      queries.getSessionCart(knex, (items) => {
-        // var allItems = {allitems :item};
-        res.render('cart', {items : items});
-      });
+      res.redirect("/cart");
+      // queries.getSessionCart(knex, (items) => {
+      //   // var allItems = {allitems :item};
+        
+      // });
     });
   });
 
