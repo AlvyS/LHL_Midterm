@@ -101,9 +101,6 @@ Cart Container
   // .cart-image {
     
   // }
-  .cart-image i {
-    // color: $white;
-  }
   .modal-cart {
     position: relative;
     display: none;
@@ -127,20 +124,19 @@ Cart Container
     }
       .modal-cart-close {
         float: left;
-        border-radius: 1em;
         background-color: $red;
         border: none;
-        color: #FFFFFF;
+        color: $black;
         text-align: center;
         font-size: 1em;
-        height: 2em;
-        padding: 1.2em;
+        height: 2.5em;
+        padding: .6em 0em 0em 0em;
         width: 5em;
         transition: all 0.5s;
         cursor: pointer;
         margin: 5px;
         &:hover, &:focus {
-          color: $black;
+          color: $white;
           text-decoration: none;
           cursor: pointer;
         }
@@ -155,13 +151,13 @@ Cart Container
       }
         .checkout-button {
           float: right;
-          border-radius: 1em;
-          background-color: $orange;
+          background-color: $green;
           border: none;
           color: #FFFFFF;
           text-align: center;
           font-size: 1em;
-          padding: 1em;
+		  height: 2.5em;
+          padding: .6em 0em 0em 0em;
           width: 10em;
           transition: all 0.5s;
           cursor: pointer;
