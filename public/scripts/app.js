@@ -37,7 +37,7 @@ $('.cd-item-info').on('click', '.info-container', function(event) {
 // });
 
 function getCartItems() {
-  $('.cart-button').on('click', function(){
+  $('.cd-cart').on('click', function(){
       $.ajax({
           url: '/cartpopup',
           method: "GET",
