@@ -22,14 +22,10 @@ $('.checkout-row').on('click', function(event) {
 });
 
 
-// //------item desc event delegation 
+// //------ Item Descriptions Slide Toggle 
 $('.cd-item-info').on('click', '.info-container', function(event) {
     $(this).find('.item-desc').slideToggle();;
 });
-
-// $('.product-name').on('click', function(event) {
-//   $('.item-desc').slideToggle();
-// });
 
 // const $desc = $('.item-desc');
 // $('.cd-single-item').on('click', () => {

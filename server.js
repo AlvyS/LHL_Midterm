@@ -16,15 +16,15 @@ const usersRoutes = require("./routes/users");
 const flash = require('connect-flash');
 var cookieSession = require('cookie-session');
 var cookieParser = require('cookie-parser');
+
 app.use(cookieSession({
   name: 'session',
   keys: ['lhl'],
-
-  // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 app.use(cookieParser());
 
+app.set('view engine', 'ejs');
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.

@@ -153,14 +153,13 @@ Cart Container
 
 #cart-container .modal-cart .modal-cart-close {
   float: left;
-  border-radius: 1em;
   background-color: #DA2224;
   border: none;
-  color: #FFFFFF;
+  color: #2b2e2f;
   text-align: center;
   font-size: 1em;
-  height: 2em;
-  padding: 1.2em;
+  height: 2.5em;
+  padding: .6em 0em 0em 0em;
   width: 5em;
   transition: all 0.5s;
   cursor: pointer;
@@ -168,7 +167,7 @@ Cart Container
 }
 
 #cart-container .modal-cart .modal-cart-close:hover, #cart-container .modal-cart .modal-cart-close:focus {
-  color: #2b2e2f;
+  color: #ffffff;
   text-decoration: none;
   cursor: pointer;
 }
@@ -183,13 +182,13 @@ Cart Container
 
 #cart-container .modal-cart .checkout-button {
   float: right;
-  border-radius: 1em;
-  background-color: #de5b48;
+  background-color: #46b29d;
   border: none;
   color: #FFFFFF;
   text-align: center;
   font-size: 1em;
-  padding: 1em;
+  height: 2.5em;
+  padding: .6em 0em 0em 0em;
   width: 10em;
   transition: all 0.5s;
   cursor: pointer;
@@ -806,6 +805,11 @@ Product Info (title + price)
 
 .cd-item-info .item-desc {
   display: none;
+  font-size: 1em;
+  padding: .2em .5em .2em .5em;
+  border-radius: .5em;
+  color: #ffffff;
+  background-color: #2b2e2f;
 }
 
 .content {
