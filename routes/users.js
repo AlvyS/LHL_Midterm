@@ -40,6 +40,14 @@ module.exports = (knex) => {
     });
   });
 
+  //for popup cart
+  router.get("/cartpopup", (req, res) => {
+    queries.getSessionCart(knex, (items) => {
+     // var allItems = {allitems :item};
+      res.json(items);
+    });
+  });
+
   //update cart item.
   router.post("/cart/:item_id/update", (req, res) => {
     console.log("request body is" , req.body);

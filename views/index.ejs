@@ -16,30 +16,33 @@
       			<form>
 					<li>
 						 <div class="cd-single-item">
-          				 	<div> <img class="img-responsive center-block" src= "<%= item.img_url %>" alt="Preview image"> </div>
+              <div> <img class="img-responsive center-block" src= "<%= item.img_url %>" alt="Preview image"> </div>
 							<div class="cd-customization">
-            					<div class="size" data-type="select">
-              						<ul class="list-unstyled">
-                						<li class="1 active">1</li>
-										<li class="2">2</li>
-										<li class="3">3</li>
-									</ul>
-           						 </div>
-            					 <button class="add-to-cart" formmethod="POST" formaction="/cart/1/add"> <!-- TODO change hardcoded user value-->
-              					 	<em>Add to Cart</em>
-              						<svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-                						<path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-              						</svg>
-            					 </button>
-          					</div> <!-- .cd-customization -->
+                <div class="size" data-type="select">
+									<select name="quantity" id="quantity" class="selectpicker" data-style="btn-warning">
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										<option value="6">6</option>
+									</select>
+                </div>
+                <button class="add-to-cart" formmethod="POST" formaction="/cart/<%= item.id %>/add"> <!-- TODO change hardcoded user value-->
+                  <em>Add to Cart</em>
+                  <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+                    <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+                  </svg>
+                </button>
+              </div> <!-- .cd-customization -->
 							<button class="cd-customization-trigger">Customize</button>
-        				 </div> <!-- .cd-single-item -->
-
+            </div> <!-- .cd-single-item -->
         				 <div class="cd-item-info">
 							<div class="info-container">
 								<div class="item-desc"> <%= item.details %></div>
-								<b><a href="#0"> <%= item.name %></a></b>
-								<em> <p class="form-control" name="price" value="<%= item.price %>"><%= item.price %></p></em>
+								<b><a href="#0" class="name"> <%= item.name %></a></b>
+								<!--<em> <p class="form-control" name="price" ><%= item.price %></p></em>-->
+								<input type="text" name="price" value="<%= item.price %>" readonly>
 							</div> <!-- info-container -->
        				 	</div> <!-- cd-item-info -->
         			</li>
