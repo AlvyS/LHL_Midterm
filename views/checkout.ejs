@@ -133,14 +133,14 @@
         </div>
         <div class="row">
           <div class="columns large-3">
-            <% if(items.length === 0) { %>
+            <% if(allitems.length === 0) { %>
               <p> YOUR CART IS EMPTY </p>
             <% } else { %>
               <script
                 src="https://checkout.stripe.com/checkout.js"
                 class="stripe-button"
                 data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz"
-                data-amount =<%=items.price%>
+                data-amount =<%=allitems.price%>
                 data-name = "purchase-items"
                 data-discription = "pizza, salad"
                 data-local ="auto"

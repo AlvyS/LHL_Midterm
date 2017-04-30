@@ -194,6 +194,8 @@
         </div>
 			</div> <!-- cd-item-info -->
 		</li>
+		  <% }); %>
+		<% } %>
 	<ul class="cd-gallery">
 		<% if(items) { %>
 			<% items.forEach( (item) => { %>
@@ -234,8 +236,8 @@
 		      </div> <!-- cd-item-info -->
 		    </li>
 			</form>
-		  <% }); %>
-		<% } %>
+			<% }); %>
+			<% } %>
 	</ul>
 	<%- include partials/_footer.ejs %>
 </body>
