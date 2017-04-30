@@ -2,7 +2,7 @@ jQuery(document).ready(function(){
 	var productCustomization = $('.cd-customization'),
 		cart = $('.cd-cart'),
 		animating = false;
-	
+
 	initCustomization(productCustomization);
 
 	$('body').on('click', function(event){
@@ -19,27 +19,27 @@ jQuery(document).ready(function(){
 				addToCartBtn = actual.find('.add-to-cart'),
 				touchSettings = actual.next('.cd-customization-trigger');
 
-			//detect click on ul.size/ul.color list elements 
-			selectOptions.on('click', function(event) { 
+			//detect click on ul.size/ul.color list elements
+			selectOptions.on('click', function(event) {
 				var selected = $(this);
 				//open/close options list
 				selected.toggleClass('is-open');
 				resetCustomization(selected);
-				
+
 				if($(event.target).is('li')) {
 					// update selected option
 					var activeItem = $(event.target),
 						index = activeItem.index() + 1;
-					
+
 					activeItem.addClass('active').siblings().removeClass('active');
 					selected.removeClass('selected-1 selected-2 selected-3').addClass('selected-'+index);
-					// if color has been changed, update the visible product image 
+					// if color has been changed, update the visible product image
 					selected.hasClass('color') && updateSlider(selected, index-1);
 				}
 			});
 
 			//detect click on the add-to-cart button
-			addToCartBtn.on('click', function() {	
+			addToCartBtn.on('click', function() {
 				if(!animating) {
 					//animate if not already animating
 					animating =  true;
@@ -63,7 +63,7 @@ jQuery(document).ready(function(){
 								animating =  false;
 							}
 						}, 600);
-					});	
+					});
 				}
 			});
 
@@ -94,10 +94,67 @@ jQuery(document).ready(function(){
 
 	function updateCart() {
 		//show counter if this is the first item added to the cart
-		( !cart.hasClass('items-added') ) && cart.addClass('items-added'); 
+		( !cart.hasClass('items-added') ) && cart.addClass('items-added');
 
 		var cartItems = cart.find('span'),
 			text = parseInt(cartItems.text()) + 1;
 		cartItems.text(text);
 	}
+
+	// function renderEachItem(items){
+	// 	for(var item in items) {
+	// 	console.log(item);
+	// 		let eachItem = `<li>
+	//       <div class="cd-single-item">
+	//         <a href="#0">
+	//           <ul class="cd-slider-wrapper">
+	//             <li><img src="${item.img_url}" alt="Preview image"></li>
+	//           </ul>
+	//         </a>
+
+	//         <div class="cd-customization">
+
+	//           <div class="size" data-type="select">
+	//             <ul>
+	//               <li class="1 active">1</li>
+	//               <li class="2">2</li>
+	//               <li class="3">3</li>
+	//               <li class="4">3</li>
+	//               <li class="5">3</li>
+	//             </ul>
+	//           </div>
+
+	//           <button class="add-to-cart">
+	//             <em>Add to Cart</em>
+	//             <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
+	//               <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
+	//             </svg>
+	//           </button>
+	//         </div> <!-- .cd-customization -->
+
+	//         <button class="cd-customization-trigger">Customize</button>
+	//       </div> <!-- .cd-single-item -->
+
+	//       <div class="cd-item-info">
+	//         <b><a href="#0">${item.name}</a></b>
+	//         <em>${item.price}</em>
+	//       </div> <!-- cd-item-info -->
+	//     </li>
+	//     <li>`;
+ //    let gallery = $(this).find('.cd-gallery').append($eachItem);
+ //  	}
+	// }
+
+	// function loadItems() {
+ //    $.ajax({
+ //      url: '/',
+ //      method: 'GET',
+ //      success: function (itemArray) {
+ //      	console.log("in ajax",itemArray);
+ //        renderEachItem(itemArray);
+ //      }
+ //    });
+ //  }
+
+	// loadItems();
 });

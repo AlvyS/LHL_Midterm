@@ -11,37 +11,46 @@
 </head>
 <body>
   <div class="row"><h2>Cart</h2></div>
-  <form action="/cart/:id" method="POST">
-    <div class="row">
-      <div class="column small-12 medium-3">
-        <h3>Item</h3>
-      </div>
-      <div class="column small-12 medium-9">
-        <h3>Price</h3>
-      </div>
-    </div>
-    <div class="row">
-      <br>
-    </div>
+  <% var total= 0 %>
+    <% if(items) { %>
+
+      <% items.forEach( (item) => { %>
+  <form action="/cart/<%= item.item_id %>/update" method="POST">
+        <% total += item.price * item.quantity %>
+        <%= total %>
+        <div class="row">
+          <div class="column small-12 medium-3">
+            <h3> <%= item.name %> </h3>
+          </div>
+          <div class="column small-12 medium-4">
+            <h3 name="quantity"> <%= item.quantity %> </h3>
+          </div>
+          <div class="column small-12 medium-5">
+            <h3> <%= item.price %> </h3>
+          </div>
+        </div>
+      <% }); %>
+    <% } %>
     <div class="row">
       <div class="column small-12 medium-3">
           <div class="input-group">
-          <input class="input-group-field" type="number">
+          <input class="input-group-field" type="number" for="button primary">
         </div>
       </div>
       <div class="column small-12 medium-9">
-        <h3>Total: </h3>  
+        <h3 name="total">Total: <%= total %> </h3>
       </div>
     </div>
     <div class="row">
       <div class="column small-12 medium-3">
-        <a class="button primary" type="submit">Add to Cart</a>
+        <!-- <a class="button primary" type="submit">Add to Cart</a> -->
+        <!-- <input type="submit" value="Tweet"> -->
+        <button type="submit" class="btn btn-default">Checkout</button>
       </div>
       <div class="column small-12 medium-9">
-        <a class="button warning" href="#">Cancel</a>
+        <a class="button warning" href="/">Cancel</a>
       </div>
     </div>
   </form>
- <div class="row"></div> 
 </body>
 </html>

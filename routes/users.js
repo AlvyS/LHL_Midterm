@@ -4,6 +4,9 @@ const authToken = 'a4e733253376adf9048714637f32996f';
 const express = require('express');
 const router  = express.Router();
 const queries = require('./queries');
+var Promise = require('promise');
+
+// const util    = require('/script/main');
 
 const twilioLibrary = require('twilio');
 // const client = new twilioLibrary.Twilio(accountSid, authToken);
@@ -13,11 +16,15 @@ module.exports = (knex) => {
 
   //get home page with all menu list
   router.get("/", (req, res) => {
-    queries.getItems(knex, (items) => {
-      var allItems = {allitems :items}
-      res.render('index', allItems);
+    //res.render('index', items);
+    var allItems;
+    var x = queries.getItems(knex, (items) => {
+      allItems = items;
+      console.log(allItems.length);
+      res.render('index',{items:allItems});
     });
   });
+
 
   //add item of particular session into cart.
   //flash message added to car
@@ -35,9 +42,9 @@ module.exports = (knex) => {
 
   //get particular session cart details.
   router.get("/cart", (req, res) => {
-    queries.getSessionCart(knex, (item) => {
-      var allItems = {allitems :item};
-      res.render('cart', allItems);
+    queries.getSessionCart(knex, (items) => {
+     // var allItems = {allitems :item};
+      res.render('cart', {items : items});
     });
   });
 
@@ -48,8 +55,13 @@ module.exports = (knex) => {
       price : req.body.price,
       quantity : req.body.quantity
     }
+    console.log("cart in update is :", cart );
     queries.updateCartItem(knex, cart, () => {
 
+      queries.getSessionCart(knex, (items) => {
+        // var allItems = {allitems :item};
+        res.render('cart', {items : items});
+      });
     });
   });
 
@@ -66,7 +78,7 @@ module.exports = (knex) => {
 
   // get cart details for that session.
   router.get("/checkout", (req, res) => {
-    queries.getSessionCart(knex,session_id, (item) => {
+    queries.getSessionCart(knex, (item) => {
       var allItems = {allitems :item}
       res.render('checkout', allItems);
     });
@@ -86,6 +98,7 @@ module.exports = (knex) => {
   //place order
   //flash_order
   router.post("/placeorder", (req, res) => {
+    console.log("hi",req.body.firstname);
     const cart = {
       price : req.body.price,
       quantity : req.body.quantity,

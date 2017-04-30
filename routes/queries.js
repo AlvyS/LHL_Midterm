@@ -30,13 +30,15 @@ getItems: (knex, done) => {
               });
   },
   //get sessions cart details.
+
   getSessionCart: (knex, done) => {
     knex
-      .select("*")
-      .from("cart")
-      .then((results) => {
-        console.log("from queries.json inside getOrderCheckout");
-        done(results);
+    .select('cart.price', 'cart.quantity','items.name','cart.item_id')
+    .from('cart')
+    .leftJoin('items','cart.item_id','items.id')
+    .then((results) => {
+      console.log("from queries.json inside getOrderCheckout", results);
+      done(results);
     });
   },
 
