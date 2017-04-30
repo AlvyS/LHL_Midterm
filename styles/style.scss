@@ -135,6 +135,8 @@ Cart Container
         transition: all 0.5s;
         cursor: pointer;
         margin: 5px;
+		border-bottom-right-radius: 1em;
+		border-bottom-left-radius: 1em;
         &:hover, &:focus {
           color: $white;
           text-decoration: none;
@@ -144,6 +146,8 @@ Cart Container
       .checkout-row {
         position: absolute;
         background-color: $black;
+		border-bottom-right-radius: 1em;
+		border-bottom-left-radius: 1em;
         width: 100%;
         bottom: 0%;
         left: 0%;
@@ -153,7 +157,7 @@ Cart Container
           float: right;
           background-color: $green;
           border: none;
-          color: #FFFFFF;
+          color: $black;
           text-align: center;
           font-size: 1em;
 		  height: 2.5em;
@@ -162,6 +166,8 @@ Cart Container
           transition: all 0.5s;
           cursor: pointer;
           margin: 5px;
+	      border-bottom-right-radius: 1em;
+		  border-bottom-left-radius: 1em;
         }
         .checkout-button span {
           cursor: pointer;
@@ -179,6 +185,7 @@ Cart Container
         }
         .checkout-button:hover span {
           padding-right: 1em;
+		  color: $white;
         }
         .checkout-button:hover span:after {
           opacity: 1;
@@ -649,15 +656,17 @@ Product Info (title + price)
 
 	b {
 		float: left;
+		font-size: 1em;
 	}
 
 	em {
 		float: right;
-		padding-left: 2em;
+		font-size: 1.5em;
 		color: lighten($navy, 20%);
 	}
 
 	a {
+		font-size: 1.5em;
 		color: $navy;
 
 		&:hover {
