@@ -4,7 +4,6 @@ const authToken = 'a4e733253376adf9048714637f32996f';
 const express = require('express');
 const router  = express.Router();
 const queries = require('./queries');
-const app = require('/scripts/app')
 
 const twilioLibrary = require('twilio');
 const client = new twilioLibrary.Twilio(accountSid, authToken);

@@ -36,26 +36,6 @@ $('.cd-item-info').on('click', '.info-container', function(event) {
 //   }
 // });
 
-
-
-
-
-
-
-  // $(() => {
-  //   $.ajax({
-  //     method: "GET",
-  //     url: "/api/users"
-  //   }).done((users) => {
-  //     for(user of users) {
-  //       $("<div>").text(user.name).appendTo($("body"));
-  //     }
-  //   });;
-  // });
-
-// //------------------------------------------------------------------------------------------------------------------------
-
-
 function getCartItems() {
   $('.cart-button').on('click', function(){
       $.ajax({
