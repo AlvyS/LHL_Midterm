@@ -4,6 +4,7 @@ const authToken = 'a4e733253376adf9048714637f32996f';
 const express = require('express');
 const router  = express.Router();
 const queries = require('./queries');
+const app = require('/scripts/app')
 
 const twilioLibrary = require('twilio');
 const client = new twilioLibrary.Twilio(accountSid, authToken);
@@ -36,7 +37,9 @@ module.exports = (knex) => {
   router.get("/cart", (req, res) => {
     queries.getSessionCart(knex, (items) => {
      // var allItems = {allitems :item};
-      res.render('cart', {items : items});
+
+      app.getCartItems(items);
+      // res.render('cart', {items : items});
     });
   });
 
@@ -91,67 +94,81 @@ module.exports = (knex) => {
     });
   });
 
-  // twilio API
+    // twilio API
+
+  function deleteCart() {
+    queries.deleteCart(knex, () => {
+      return;
+    });
+  }
+
+
   router.post('/message/confirmation/:orderId', (req, res) => {
-    res.header('Content-Type','text/xml').send(xml({
-      Response: [{
-        Say: [{ _attr: { voice: 'alice' }}, `order number ${req.params.orderId} from user, please press the expecter pick time`]
-      }]
-    }));
-  });
+    queries.getSessionCart(knex, (items) => {
+      if(items) {
+        var msg = '';
+        items.forEach( (item) => {
+        msg += item.quantity + ' ' + item.name +'    ';
+      });
+        res.header('Content-Type','text/xml').send(xml({
+          Response: [{
+            Say: [{ _attr: { voice: 'alice' }}, `order number ${req.params.orderId} ${msg}`]}]
+          }));
+          }   // ----> if statement
+          }); // -------> query
+    deleteCart();
+  }); //--->router.post
+
 
   router.post("/placeorder", (req, res, next) => {
-    if (!req.body.firstname || !req.body.lastname || !req.body.phone === '') {
+    if (req.body.firstname === '' || req.body.lastname === '' || req.body.phone === '') {
       req.flash('error', 'first name, last name and phone number are required');
       res.redirect('/checkout');
       return;
     } else {
-      const cart = {
-        price : req.body.price,
-        quantity : req.body.quantity,
-        first_name : req.body.firstname,
-        last_name : req.body.lastname,
-        phone : req.body.phone,
+        const cart = {
+          price : req.body.price,
+          quantity : req.body.quantity,
+          first_name : req.body.firstname,
+          last_name : req.body.lastname,
+          phone : req.body.phone,
+        }
+
+        queries.placeOrder(knex, cart, (orderId) => {
+          if(orderId == null) {
+            req.flash('error', 'Cart is empty!');
+            res.redirect('/checkout');
+          } else {
+            client.calls.create({
+              url: 'http://' + req.headers.host + '/message/confirmation/' + orderId,
+              to: '+17782512517',
+              from: '+17787851351'
+        }, function(err, call) {
+            if (err){
+            console.log(err.message);
+            }
+            process.stdout.write(call.sid);
+            }
+            );
+          var token = req.body.stripeToken;
+          console.log(token);
+          var chargeAmount = req.body.chargeAmount;
+          var cherge = stripe.charges.create({
+          amount: chargeAmount,
+          curruncy: 'cad',
+          source : token
+        },
+        function(err, charge){
+          if (err & err.type === 'StripeCardError'){
+            console.log('Your card was decliend');
+          }
+        });
+        res.render('paysuccess');
+          }
+        });
       }
-      queries.placeOrder(knex, cart, (orderId) => {
-        if(orderId == null) {
-          req.flash('error', 'Cart is empty!');
-          res.redirect('/checkout');
-        } else {
-        console.log('Twilio');
-        client.calls.create({
-        url: 'http://' + req.headers.host + '/message/confirmation/' + orderId,
-        to: '+17782512517',
-        from: '+17787851351'
-      }, function(err, call) {
-        if (err){
-          console.log(err.message);
-        }
-        process.stdout.write(call.sid);
-      }
-      );
-      //Stripe API
-      var token = req.body.stripeToken;
-      console.log(token);
-      var chargeAmount = req.body.chargeAmount;
-      var cherge = stripe.charges.create({
-        amount: chargeAmount,
-        curruncy: 'cad',
-        source : token
-      },
-      function(err, charge){
-        if (err & err.type === 'StripeCardError'){
-          console.log('Your card was decliend');
-        }
       });
-      // req.flash('info', 'The order has been placed successfully. You will recive a a detailed text shortly');
-      res.render('paysuccess');
-        }
-      });
-    }
-  });
   return router;
 }
-
 
 

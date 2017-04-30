@@ -101,63 +101,6 @@ jQuery(document).ready(function(){
 		cartItems.text(text);
 	}
 
-	// function renderEachItem(items){
-	// 	for(var item in items) {
-	// 	console.log(item);
-	// 		let eachItem = `<li>
-	//       <div class="cd-single-item">
-	//         <a href="#0">
-	//           <ul class="cd-slider-wrapper">
-	//             <li><img src="${item.img_url}" alt="Preview image"></li>
-	//           </ul>
-	//         </a>
-
-	//         <div class="cd-customization">
-
-	//           <div class="size" data-type="select">
-	//             <ul>
-	//               <li class="1 active">1</li>
-	//               <li class="2">2</li>
-	//               <li class="3">3</li>
-	//               <li class="4">3</li>
-	//               <li class="5">3</li>
-	//             </ul>
-	//           </div>
-
-	//           <button class="add-to-cart">
-	//             <em>Add to Cart</em>
-	//             <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
-	//               <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
-	//             </svg>
-	//           </button>
-	//         </div> <!-- .cd-customization -->
-
-	//         <button class="cd-customization-trigger">Customize</button>
-	//       </div> <!-- .cd-single-item -->
-
-	//       <div class="cd-item-info">
-	//         <b><a href="#0">${item.name}</a></b>
-	//         <em>${item.price}</em>
-	//       </div> <!-- cd-item-info -->
-	//     </li>
-	//     <li>`;
- //    let gallery = $(this).find('.cd-gallery').append($eachItem);
- //  	}
-	// }
-
-	// function loadItems() {
- //    $.ajax({
- //      url: '/',
- //      method: 'GET',
- //      success: function (itemArray) {
- //      	console.log("in ajax",itemArray);
- //        renderEachItem(itemArray);
- //      }
- //    });
- //  }
-
-	// loadItems();
-
 	function calculateTotal(items){
 		let result = 0;
 		items.forEach( (item) => {

@@ -38,25 +38,24 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <form>
+        <form>
           <div id='cart-container'>
-            <button type="button" class="btn btn-default btn-lg">
-              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" formmethod = "GET" formaction = "/cart"></span> Cart
+            <button type="button" class="cart-button btn btn-default btn-lg"  >
+              <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Cart
                 <div class='modal-cart'>
                   <div class='modal-cart-content'>
-                    
+                    <div class="modal-cart-items"></div>
                       <div class="checkout-row"> 
-                        <span class='modal-cart-close'>Close</span>
+                        <span class='modal-cart-close' href="#/0">Close</span>
                         <div class="checkout-button">
-                          <span formmethod = "GET" formaction = "/checkout"> Checkout Now! </span>
+                          <span formaction="/checkout" formmethod="GET"> Checkout Now! </span>
                         </div>
                       </div>
-                   
                   </div>
                 </div>
             </button>
           </div>
-           </form>
+      </form>
         </li>
       </ul>
 
