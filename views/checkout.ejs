@@ -69,8 +69,13 @@
           </div>
         </div>
         <div class="row">
+          <p> hiiiiiiii <%= items %> </p>
           <div class="columns large-3">
-            <input type='submit' class="button">Place Order and pay at the restaurant</input>
+            <% if(items.length === 0) { %>
+              <p> YOUR CART IS EMPTY </p>
+            <% } else { %>
+              <input type='submit' class="button">Place Order and pay at the restaurant</input>
+            <% } %>
           </div>
           <div class="columns large-9">
             <a href="/" class="button secondary">Cancel</a>

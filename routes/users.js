@@ -72,15 +72,17 @@ module.exports = (knex) => {
       quantity : req.body.quantity
     }
     queries.deleteCartItem(knex, cart, () => {
-
+      queries.getSessionCart(knex, (items) => {
+        // var allItems = {allitems :item};
+        res.render('cart', {items : items});
+      });
     });
   });
 
   // get cart details for that session.
   router.get("/checkout", (req, res) => {
-    queries.getSessionCart(knex, (item) => {
-      var allItems = {allitems :item}
-      res.render('checkout', allItems);
+    queries.getSessionCart(knex, (items) => {
+      res.render('checkout', {items : items});
     });
   });
 
@@ -94,7 +96,6 @@ module.exports = (knex) => {
     }]
    }));
   });
-
 
   router.post("/placeorder", (req, res) => {
     console.log('Test first name: ', req.body.firstname);
