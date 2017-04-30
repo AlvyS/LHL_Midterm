@@ -75,15 +75,11 @@ module.exports = (knex) => {
   // get cart details for that session.
   router.get("/checkout", (req, res) => {
     queries.getSessionCart(knex, (items) => {
-<<<<<<< HEAD
       let total = 0;
       items.forEach( (item) => {
         total += (item.price*item.quantity);
       });
       res.render('checkout', {allitems: items, total:total} );
-=======
-      res.render('checkout', {items : items});
->>>>>>> 386bf85ee9d037129c9d27d7e9cc81da7ac73d7b
     });
   });
 

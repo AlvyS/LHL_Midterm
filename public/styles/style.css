@@ -168,6 +168,94 @@ Cart Container
   #cart-container .modal-cart .checkout-button:hover span:after {
     opacity: 1;
     right: 0; }
+  z-index: 2;
+}
+
+#cart-container .modal-cart .modal-cart-content {
+  background-color: #ffffff;
+  border-radius: 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  box-shadow: 0 0 1em 0 #222;
+  -webkit-box-shadow: 0 0 1em 0 #222;
+  -moz-box-shadow: 0 0 1em 0 #222;
+  margin: -10em 0 0 -13em;
+  padding: .1em;
+  position: fixed;
+  top: 50%;
+  right: 5%;
+  height: 70%;
+  width: 30%;
+}
+
+#cart-container .modal-cart .modal-cart-close {
+  float: left;
+  background-color: #DA2224;
+  border: none;
+  color: #2b2e2f;
+  text-align: center;
+  font-size: 1em;
+  height: 2.5em;
+  padding: .6em 0em 0em 0em;
+  width: 5em;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#cart-container .modal-cart .modal-cart-close:hover, #cart-container .modal-cart .modal-cart-close:focus {
+  color: #ffffff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#cart-container .modal-cart .checkout-row {
+  position: absolute;
+  background-color: #2b2e2f;
+  width: 100%;
+  bottom: 0%;
+  left: 0%;
+}
+
+#cart-container .modal-cart .checkout-button {
+  float: right;
+  background-color: #46b29d;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1em;
+  height: 2.5em;
+  padding: .6em 0em 0em 0em;
+  width: 10em;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+#cart-container .modal-cart .checkout-button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+#cart-container .modal-cart .checkout-button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+#cart-container .modal-cart .checkout-button:hover span {
+  padding-right: 1em;
+}
+
+#cart-container .modal-cart .checkout-button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
 
 #cart-container .modal-cart.active {
   display: block;
@@ -627,6 +715,41 @@ Product Info (title + price)
     border-radius: .5em;
     color: #ffffff;
     background-color: #2b2e2f; }
+  font-weight: bold;
+}
+
+.cd-item-info::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.cd-item-info b {
+  float: left;
+}
+
+.cd-item-info em {
+  float: right;
+  padding-left: 2em;
+  color: #5484a0;
+}
+
+.cd-item-info a {
+  color: #314d5d;
+}
+
+.cd-item-info a:hover {
+  text-decoration: underline;
+}
+
+.cd-item-info .item-desc {
+  display: none;
+  font-size: 1em;
+  padding: .2em .5em .2em .5em;
+  border-radius: .5em;
+  color: #ffffff;
+  background-color: #2b2e2f;
+}
 
 .content {
   top: 87%;
