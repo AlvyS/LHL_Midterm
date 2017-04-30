@@ -20,6 +20,7 @@ body {
 		size: 1.6rem;
 		family: $primary-font; // variables inside partials > _variables.scss
 	}
+	padding-top: 5%;
 	color: $navy;
 	background-color: shade($white, 5%);
 }
@@ -66,25 +67,42 @@ header {
 }
 
 /* -------------------------------- 
+Nav Bar
+-------------------------------- */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------------------------------- 
 Cart Container
 -------------------------------- */
 
 #cart-container {
-  float: right;
-  height: 100%;
-  width: 5%;
-  padding: 1em 0em 1em 1.5em;
-  cursor: pointer;
-  background-color: $green;
-	box-sizing: border-box;
-  &:hover {
-    background-color:$orange;
-  }
+//   float: right;
+//   height: 100%;
+//   width: 5%;
+//   padding: 1em 0em 1em 1.5em;
+//   cursor: pointer;
+//   background-color: $green;
+// 	box-sizing: border-box;
+//   &:hover {
+//     background-color:$orange;
+//   }
   // .cart-image {
     
   // }
   .cart-image i {
-    color: $white;
+    // color: $white;
   }
   .modal-cart {
     position: relative;
@@ -92,7 +110,7 @@ Cart Container
     z-index: 2;
 
     .modal-cart-content {
-      background-color: $yellow;
+      background-color: $white;
       border-radius: 1em;
       -webkit-border-radius: 1em;
       -moz-border-radius: 1em;
@@ -102,7 +120,7 @@ Cart Container
       margin: -10em 0 0 -13em;
       padding: .1em;
       position: fixed;
-      top: 40%;
+      top: 50%;
       right: 5%;
       height: 70%;
       width: 30%;
@@ -115,7 +133,7 @@ Cart Container
         color: #FFFFFF;
         text-align: center;
         font-size: 1em;
-        height: 4em;
+        height: 2em;
         padding: 1.2em;
         width: 5em;
         transition: all 0.5s;
@@ -232,6 +250,7 @@ Gallery grid
 	width: 90%;
 	max-width: $L;
 	margin: 1.5em auto;
+	list-style: none;
 
 	> li {
 		margin-bottom: 2em;
