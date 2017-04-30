@@ -146,7 +146,6 @@ module.exports = (knex) => {
             if (err){
             console.log(err.message);
             }
-            process.stdout.write(call.sid);
             }
             );
           var token = req.body.stripeToken;
