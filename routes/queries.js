@@ -1,5 +1,3 @@
-"use strict";
-
 const express = require('express');
 const router  = express.Router();
 
@@ -99,9 +97,18 @@ getItems: (knex, done) => {
     });
   },
 
-
+//delete cart after call.
+  deleteCart: (knex, done) => {
+    knex('cart')
+    .del()
+    .then(() => {
+      done();
+    });
+  },
   //place order
   placeOrder:(knex, sessionCart, done) => {
+    var today = new Date();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
     knex('users')
     .insert({
@@ -113,7 +120,7 @@ getItems: (knex, done) => {
       var tempuserid = userid[0];
       const total = knex('cart').sum('price');
       knex('orders')
-      .insert({ date : '2017-04-26',
+      .insert({ date : date,
               total_price : total,
               status : "process",
               user_id : tempuserid,
@@ -135,11 +142,12 @@ getItems: (knex, done) => {
                         item_id: row.item_id,
                         order_id: row.order_id
                  }).then(() => {
-                    knex('cart')
-                    .del().then(() => {
-                      console.log("hello there");
+                  console.log("before cart delete");
+                    // knex('cart')
+                    // .del().then(() => {
+                    //   console.log("hello there");
                       done(orderid);
-                    });
+                    // });
                  });
             });
           } else {
