@@ -75,6 +75,7 @@ function getCartItems() {
                       <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/${item.item_id}/delete" >Remove</button>
                     </div>                    
                   </div>
+                  </form>
                   `;
                   htmlData += loopData;
                   total += item.price*item.quantity;
@@ -87,19 +88,6 @@ function getCartItems() {
                 <h3 name="total">Total: ${total} </h3>
               </div>
             </div>
-          </form>
-          <form> 
-            <div class="row">
-              <div class="column small-12 medium-3">
-                <!-- <a class="button primary" type="submit">Add to Cart</a> -->
-                <!-- <input type="submit" value="Tweet"> -->
-                <button type="submit" class="btn btn-default" formmethod="GET" formaction="/checkout" >Checkout</button>
-              </div>
-              <div class="column small-12 medium-9">
-                <a class="button warning" href="/">Cancel</a>
-              </div>
-            </div>
-          </form>
           `;
 
               htmlData += totalData;
@@ -110,39 +98,38 @@ function getCartItems() {
   });
 }
 
-$(function() {
+$(function() { 
   const $form = $('#submit');
-  const $price = $('.price');
-  const $quantity = $('#quantity');
-  const $item_id = $('.item_id');
-  
-  $form.submit( (event) => {
+  const $item_id = $('input.item_id').val();
+  let url = '/cart/'+$item_id+'/add';
+  $form.on('click', '.add-to-cart',(event) => {
     event.preventDefault();
     $.ajax({
       type: 'POST',
-      url: '/cart/$item_id/add',
+      url: url,
       data: $form.serialize(),
       success: () => {
-        
+      
       }
 
     });
   });
 });
 
-$(function() {
-  const $checkout = $('.checkout-button');
-  $checkout.submit( (event) => {
-    event.preventDefault();
-    $.ajax({
-      type: 'GET',
-      url: '/checkout',
-      success: () => {
-       console.log(`eqwioewqioewquou`); 
-      }
-    });
-  });
-});
+
+// $(function() {
+//   const $checkout = $('.checkout-button');
+//   $checkout.submit( (event) => {
+//     event.preventDefault();
+//     $.ajax({
+//       type: 'GET',
+//       url: '/checkout',
+//       success: () => {
+//        console.log(`eqwioewqioewquou`); 
+//       }
+//     });
+//   });
+// });
 
 getCartItems();
 
