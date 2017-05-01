@@ -68,14 +68,12 @@
             </div> <!-- .cd-single-item -->
         				 <div class="cd-item-info">
 							<div class="info-container">
-								<div class="item-desc"> <%= item.details %></div>
-								<b><a href="#0" class="name"> <%= item.name %></a></b>
-
-								<input type="text" class="price" value="<%= item.price %>" >
-
-								<!--<em> <p class="form-control" name="price" ><%= item.price %></p></em>-->
-								<input name="price" id="price" value="<%= item.price %>" readonly></input>
-
+                  <div class="item-desc"> <%= item.details %></div>
+                <div class="row">
+                  <div class="col-sm-8 text-left"><b><a href="#0" class="name"> <%= item.name %></a></b></div>
+                  <div class="col-sm-2 text-right">$</div>
+                  <div class="col-sm-2 text-left"><input type="text" class="price" value="<%= item.price %>" ></div>
+                </div>
 								<input type="hidden" class="item_id" value="<%= item.id %>" readonly>
       			</form>
 							</div> <!-- info-container -->

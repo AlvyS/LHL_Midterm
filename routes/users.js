@@ -5,7 +5,12 @@ const queries = require('./queries');
 const config = require('./config');
 
 const twilioLibrary = require('twilio');
+<<<<<<< HEAD
 const client = new twilioLibrary.Twilio(`${config.accountSid}`, `${config.authToken}`);
+=======
+const client = new twilioLibrary.Twilio(accountSid, authToken);
+// const client = new twilioLibrary.Twilio(`${config.accountSid}`, `${config.authToken}`);
+>>>>>>> cart-style
 const xml = require('xml');
 const stripe = require('stripe')('sk_test_oiTiaepjGnO00M29MV7vde0y');
 module.exports = (knex) => {
