@@ -129,6 +129,21 @@ $(function() {
     });
   });
 });
+
+$(function() {
+  const $checkout = $('.checkout-button');
+  $checkout.submit( (event) => {
+    event.preventDefault();
+    $.ajax({
+      type: 'GET',
+      url: '/checkout',
+      success: () => {
+       console.log(`eqwioewqioewquou`); 
+      }
+    });
+  });
+});
+
 getCartItems();
 
 
