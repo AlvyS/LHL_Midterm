@@ -8,14 +8,20 @@
       <div class="row">
 
         <div class="col-sm-4 col-md-4 col-lg-4">
-          <p>User Name</p>
-          <p>Phone Number</p>
-          <p>Order Date</p>
-          <p>Restaurant Address</p>
+          <p><b>McArBy King<br>
+          Phone : (604) 401-1234<br>
+          Order Date<br>
+          Restaurant Address : </br>
+          128 W. Hastings. #350 </br>
+          Vancouver B.C. Canada </br>
+          V6B 1G8</b></p>
         </div>
+      
         <div class="col-sm-8 col-md-8 col-lg-8">
           <div class="row">
         <form action="/placeorder" method="POST">
+        <fieldset>
+          <legend>Checkout</legend>
         <% if(allitems){  %>
           <% allitems.forEach( (item) => {  %>
               <div class="form-group">
@@ -65,16 +71,17 @@
                     <% } %>
                     <% total *= 100 %>
           <script
-          src="https://checkout.stripe.com/checkout.js"
-          class="stripe-button"
-          data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz"
-          data-amount =<%=total%>
-          data-name = "purchase-items"
-          data-discription = "pizza, salad"
-          data-local ="auto"
-          data-curruncy ="cad">
+          src="https://checkout.stripe.com/checkout.js";
+          class="stripe-button";
+          data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz";
+          data-amount =<%=total%>;
+          data-name = "purchase-items";
+          data-discription = "pizza, salad";
+          data-local ="auto";
+          data-curruncy ="cad">;
           </script>
           <input type="hidden" name="chargeAmount" value=<%=total%>>
+          </fieldset>
           </form>
           <% } %>
           </div>

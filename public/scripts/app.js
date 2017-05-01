@@ -99,5 +99,25 @@ function getCartItems() {
       });
   });
 }
+
+$(function() {
+  const $form = $('#submit');
+  const $price = $('.price');
+  const $quantity = $('#quantity');
+  const $item_id = $('.item_id');
+  
+  $form.submit( (event) => {
+    event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/cart/$item_id/add',
+      data: $form.serialize(),
+      success: () => {
+        
+      }
+
+    });
+  });
+});
 getCartItems();
 });
