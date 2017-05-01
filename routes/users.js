@@ -62,10 +62,9 @@ module.exports = (knex) => {
       console.log("cart in update is :", cart );
       queries.updateCartItem(knex, cart, () => {
         //res.redirect("/");
-        
+
       });
     } else {
-      //res.redirect("/");
     }
   });
 
@@ -103,6 +102,7 @@ module.exports = (knex) => {
 
 
   router.post('/message/confirmation/:orderId', (req, res) => {
+    console.log(req.body.firstname)
     queries.getSessionCart(knex, (items) => {
       if(items) {
         var msg = '';
@@ -120,7 +120,7 @@ module.exports = (knex) => {
 
 
   router.post("/placeorder", (req, res, next) => {
-    if (req.body.firstname === '' || req.body.lastname === '' || req.body.phone === '') {
+    if (!req.body.firstname || !req.body.lastname  || !req.body.phone ) {
       req.flash('error', 'first name, last name and phone number are required');
       res.redirect('/checkout');
       return;
