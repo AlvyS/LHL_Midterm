@@ -12,7 +12,7 @@ $('.modal-close').on('click', function(event) {
   $('.modal-cart').toggleClass('active');
 });
 
-// //--------------------- Item Descriptions Slide Toggle 
+// //--------------------- Item Descriptions Slide Toggle
 $('.cd-item-info').on('click', '.info-container', function(event) {
     $(this).find('.item-desc').slideToggle();;
 });
@@ -58,14 +58,14 @@ function getCartItems() {
             console.log('sfdsafdsafdsafdsafds',items);
             if(items){
               items.forEach( (item) => {
-                var loopData = 
+                var loopData =
                 `<div class="row">
                     <div class="column small-12 medium-3">
                       <h3> ${item.name}</h3>
                     </div>
                     <div class="column small-12 medium-5">
                       <h3 name = "price"> ${item.price} </h3>
-                    </div> 
+                    </div>
                     <div class="input-group column small-12 medium-4">
                       <h3> ${item.quantity} </h3>
                       <input class="input-group-field" name = "quantity" type="number" for="btn btn-default">
@@ -73,7 +73,7 @@ function getCartItems() {
                     <div class="row">
                       <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/${item.item_id}/update" >Edit</button>
                       <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/${item.item_id}/delete" >Remove</button>
-                    </div>                    
+                    </div>
                   </div>
                   </form>
                   `;
@@ -112,6 +112,7 @@ function getCartItems() {
       
 //       }
 
+
 //     });
 //   });
 // });
@@ -129,6 +130,8 @@ function getCartItems() {
 //     });
 //   });
 // });
+
+
 
 getCartItems();
 
