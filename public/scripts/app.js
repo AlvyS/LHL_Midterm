@@ -75,6 +75,7 @@ function getCartItems() {
                       <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/${item.item_id}/delete" >Remove</button>
                     </div>
                   </div>
+                  </form>
                   `;
                   htmlData += loopData;
                   total += item.price*item.quantity;
@@ -87,6 +88,7 @@ function getCartItems() {
                 <h3 name="total">Total: ${total} </h3>
               </div>
             </div>
+<<<<<<< HEAD
           </form>
           <form>
             <div class="row">
@@ -100,6 +102,8 @@ function getCartItems() {
               </div>
             </div>
           </form>
+=======
+>>>>>>> e221d8be6ba2e19929b27b30bb0302415287d8e7
           `;
 
               htmlData += totalData;
@@ -117,13 +121,17 @@ $(function() {
   const $item_id = $('.item_id');
 
   $form.submit( (event) => {
+
+  const $item_id = $('input.item_id').val();
+  let url = '/cart/'+$item_id+'/add';
+  $form.on('click', '.add-to-cart',(event) => {
+
     event.preventDefault();
     $.ajax({
       type: 'POST',
-      url: '/cart/$item_id/add',
+      url: url,
       data: $form.serialize(),
       success: () => {
-
       }
 
     });
