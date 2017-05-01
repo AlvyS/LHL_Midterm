@@ -1,12 +1,11 @@
-const accountSid = 'ACbc4bb0ace1e44adfc08ab57115ec0ec9';
-const authToken = 'a4e733253376adf9048714637f32996f';
-
 const express = require('express');
 const router  = express.Router();
 const queries = require('./queries');
 
+const config = require('./config');
+
 const twilioLibrary = require('twilio');
-const client = new twilioLibrary.Twilio(accountSid, authToken);
+const client = new twilioLibrary.Twilio(`${config.accountSid}`, `${config.authToken}`);
 const xml = require('xml');
 const stripe = require('stripe')('sk_test_oiTiaepjGnO00M29MV7vde0y');
 module.exports = (knex) => {
@@ -84,12 +83,12 @@ module.exports = (knex) => {
 
   // get cart details for that session.
   router.get("/checkout", (req, res) => {
-    console.log("in /checkout");
     queries.getSessionCart(knex, (items) => {
       let total = 0;
       items.forEach( (item) => {
         total += (item.price*item.quantity);
       });
+      console.log('Here after DB');
       res.render('checkout', {allitems: items, total:total} );
     });
   });
@@ -151,7 +150,6 @@ module.exports = (knex) => {
             }
             );
           var token = req.body.stripeToken;
-          console.log(token);
           var chargeAmount = req.body.chargeAmount;
           var cherge = stripe.charges.create({
           amount: chargeAmount,

@@ -2,6 +2,7 @@ exports.seed = function(knex, Promise) {
  return knex.raw("truncate table items cascade")
    .then(function () {
      return Promise.all([
+
        knex('items').insert({id: 1, name: 'Caesar salad', price: '7', restaurants_id:'1', img_url:'http://assets.bonappetit.com/photos/57ae12ef53e63daf11a4e1d6/16:9/w_2056,c_limit/BA-best-classic-caeser-salad.jpg', details:'a classic favourite, with creamy, roasted garlic dressing'}),
        knex('items').insert({id: 2, name: 'Caprese salad', price: '7', restaurants_id:'1', img_url:'http://www.thecomfortofcooking.com/wp-content/uploads/2015/07/GrilledZucchiniCapreseSalad-4.jpg', details:'bocconcini, Roma tomato, fresh basil, drizzled with basil- infused olive oil & balsamic'}),
        knex('items').insert({id: 3, name: 'Fettucini Alfredo', price: '14', restaurants_id:'1', img_url:'https://static.betazeta.com/www.sabrosia.com/up/2014/04/Fetuccini-con-Salm%C3%B3n--960x623.jpg', details:'cracked pepper sauteed with garlic in a parmesan cream sauce & a touch of nutmeg'}),
@@ -16,8 +17,3 @@ exports.seed = function(knex, Promise) {
      ]);
    });
 };
-
-
-
-
-

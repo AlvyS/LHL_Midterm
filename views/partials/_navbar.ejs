@@ -1,5 +1,5 @@
 <!--<link href = "//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel = "stylesheet">-->
-      
+
 
 <nav class="navbar navbar- primary navbar-default navbar-fixed-top navbar-inverse" role="navigation">
   <div class="container-fluid">
@@ -24,20 +24,32 @@
       </ul>
 
       <button type="button" class="btn btn-default navbar-btn">Sign in</button>
-
+      <form>
+      <button type="submit" class="btn btn-default navbar-btn check-out" style="float : right ">Check Out</button>
+      </form>
       <ul class="nav navbar-nav navbar-right">
         <li>
+<<<<<<< HEAD
         <!--<form>-->
+=======
+        <form action="/checkout" method="GET">
+>>>>>>> fad8e70919787a0562aa0041aea9a4f4534859f1
           <div id='cart-container'>
                <a href="#0" class="cd-cart"><span>0</span></a>
                 <div class='modal-cart'>
                   <div class='modal-cart-content'>
                     <div class="modal-cart-items"></div>
-                      <div class="checkout-row"> 
+                      <div class="checkout-row">
                         <span class='modal-cart-close' href="#/0">Close</span>
+<<<<<<< HEAD
                         <form action="/checkout" method="GET">
                           <input class="checkout-button" value="Checkout Now!" type="submit" />
                         </form>
+=======
+                        <div class="checkout-button">
+                          <button type="submit" formaction="/checkout" formmethod="GET"> Checkout Now! </button>
+                        </div>
+>>>>>>> fad8e70919787a0562aa0041aea9a4f4534859f1
                       </div>
                   </div>
                 </div>
