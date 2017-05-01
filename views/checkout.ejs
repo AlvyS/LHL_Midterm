@@ -71,14 +71,14 @@
                     <% } %>
                     <% total *= 100 %>
           <script
-          src="https://checkout.stripe.com/checkout.js";
-          class="stripe-button";
+          src="https://checkout.stripe.com/checkout.js"
+          class="stripe-button"
           data-key="pk_test_4TgwIgnj8uLaXMyP0V0ULmuz";
-          data-amount =<%=total%>;
+          data-amount = <%= total %>;
           data-name = "purchase-items";
           data-discription = "food";
-          data-local ="auto";
-          data-curruncy ="cad">;
+          data-local = "auto";
+          data-curruncy = "cad";
           </script>
           <input type="hidden" name="chargeAmount" value=<%=total%>>
           </fieldset>
