@@ -125,6 +125,67 @@ header h1 {
 /* -------------------------------- 
 Nav Bar
 -------------------------------- */
+.navbar-brand {
+  background-image: url("../images/logo.jpg");
+  background-size: cover;
+  width: 3em;
+}
+
+/* -------------------------------- 
+Home
+-------------------------------- */
+#home {
+  color: #ffffff;
+  width: 100%;
+  padding-top: 1em;
+  margin-top: -1em;
+  height: 100vh;
+  background-color: #46b29d;
+  background-image: url("../images/background.jpg");
+  background-size: cover;
+}
+
+#home .home-body {
+  color: #ffffff;
+  height: 90%;
+}
+
+#home .home-body .home-container {
+  color: #ffffff;
+  height: 90%;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+#home .home-body .home-container .header-container {
+  color: #ffffff;
+  margin-top: 10%;
+  padding: 3em 10em 3em 10em;
+  text-align: center;
+}
+
+#home .home-body .home-container .header-container h1 {
+  color: #ffffff;
+  background-color: rgba(105, 105, 105, 0.2);
+  border-radius: 1em;
+  font-size: 5em;
+}
+
+#home .home-body .home-container .header-container p {
+  color: #ffffff;
+  background-color: rgba(105, 105, 105, 0.2);
+  border-radius: 1em;
+  font-size: 1.5em;
+}
+
+#home .home-body .home-container .header-container button {
+  color: #ffffff;
+  background-color: #2b2e2f;
+  width: 2em;
+  border-radius: 1em;
+  font-size: 3em;
+}
+
 /* -------------------------------- 
 Cart Container
 -------------------------------- */

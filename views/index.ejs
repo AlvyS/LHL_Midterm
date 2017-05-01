@@ -5,8 +5,32 @@
 <%- include partials/_header.ejs %>
 <%- include partials/_navbar.ejs %>
 
+
+
+
+
+<div id="home">
+  <div class="home-body">
+    <div class="home-container">
+      <div class="header-container">
+        <h1 class="welcome header"> Welcome </h1>
+        <p class="welcome-text"> Welcome to McArby's King. Our goal is to introduce a new twist to the fast food industry, cool right?</p>
+        <p> Click to begin your order. </p>
+        <button type="button" id="arrow-btn" href="#menu-page" class="btn btn-default" aria-label="Left Align">
+          <span class="fa fa-angle-double-down animated" aria-hidden="true"></span>
+        </button>
+        </a>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
 <!--OPEN-->
-<div class="row content">
+<div id= "menu-page" class="row content">
 <!--Real Data looping through DB-->
 	<ul class="cd-gallery">
 		<% if(items) { %>

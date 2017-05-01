@@ -70,16 +70,66 @@ header {
 Nav Bar
 -------------------------------- */
 
+.navbar-brand {
+	background-image: url("../images/logo.jpg");
+	background-size: cover;
+	width: 3em;
+}
+
+/* -------------------------------- 
+Home
+-------------------------------- */
+#home {
+	color: $white;
+	width: 100%;
+	padding-top: 1em;
+	margin-top: -1em;
+	height: 100vh;
+	background-color: $green;
+	background-image: url('../images/background.jpg');
+	background-size: cover;
+	.home-body {
+		color: $white;
+		height: 90%;
+		.home-container {
+			color: $white;
+			height: 90%;
+			margin-left: 15%;
+			margin-right: 15%;
+			.header-container {
+				color: $white;
+				margin-top: 10%;
+				padding: 3em 10em 3em 10em;
+				text-align: center;
+				h1 {
+					color: $white;
+					background-color: rgba(105,105,105,0.2); 
+					border-radius: 1em;
+					font-size: 5em;
+				}
+				p {
+					color: $white;
+					background-color: rgba(105,105,105,0.2); 
+					border-radius: 1em;
+					font-size: 1.5em;
+				}
+				button {
+					color: $white;
+					background-color: $black;
+					width: 2em;
+					border-radius: 1em;
+					font-size: 3em;
+				}
+			}
+		}
+	}
 
 
 
 
 
 
-
-
-
-
+}
 
 
 

@@ -1,41 +1,51 @@
 $(document).ready(function () {
-// //------------------------------------------------------------------------------------------------------------------------
+// //--------------------------------------  OPEN -------------------------------------------------------------------------
 
-
-// //------------------- Open Modal popup when clicking on cart ------------------------------------
+// //------------------------ Open Modal popup when clicking on cart ------------------------------------
 $('#cart-container').on('click', function(event) {
-  console.log("i clicked!")
+  event.preventDefault();
   $('.modal-cart').toggleClass('active');
-  console.log($('.modal-cart'))
 });
 
-// //------------------- Close cart when clicking "X" -------------------------------------------
+// //------------------------ Close cart when clicking "X" -------------------------------------------
 $('.modal-close').on('click', function(event) {
   $('.modal-cart').toggleClass('active');
 });
 
-
-
-// //--------------
-$('.checkout-row').on('click', function(event) {
-  $('.checkout-row').toggleClass('active');
-});
-
-
-// //------ Item Descriptions Slide Toggle 
+// //--------------------- Item Descriptions Slide Toggle 
 $('.cd-item-info').on('click', '.info-container', function(event) {
     $(this).find('.item-desc').slideToggle();;
 });
 
-// const $desc = $('.item-desc');
-// $('.cd-single-item').on('click', () => {
-//   if($desc.is(':hidden')){
-//     $(this).slideDown(650, () => {
-//       $(this).trigger('reset');
-//     });
-//   }
-// });
 
+// // Scroll Animation Nav Home to Home
+$(document).on('click', '#scroll-home', function(event){
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+});
+
+// // Scroll Animation Nav Menu to Menu
+$(document).on('click', '#scroll-menu', function(event){
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+});
+
+// //----------------- Scroll Animation Arrows to Menu
+$(document).on('click', '#arrow-btn', function(event){
+    event.preventDefault();
+    $('html, body').animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+});
+
+
+
+
+// // Function to get cart items from current session and post on page
 function getCartItems() {
   $('.cart-button').on('click', function(){
       $.ajax({
@@ -100,4 +110,12 @@ function getCartItems() {
   });
 }
 getCartItems();
+
+
+// // ---------------------------------------- CLOSE for Document Ready
 });
+
+// // //-------------- trash
+// $('.checkout-row').on('click', function(event) {
+//   $('.checkout-row').toggleClass('active');
+// });
