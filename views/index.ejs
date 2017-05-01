@@ -35,8 +35,11 @@
 	<ul class="cd-gallery">
 		<% if(items) { %>
 			<% items.forEach( (item) => { %>
-      			<form id="submit">
 					<li>
+						<div class="row">
+      			<form id="submit">
+
+
 						 <div class="cd-single-item">
               <div> <img class="img-responsive center-block" src= "<%= item.img_url %>" alt="Preview image"> </div>
 							<div class="cd-customization">
@@ -68,8 +71,9 @@
 								<input type="hidden" class="item_id" value="<%= item.id %>" readonly>
 							</div> <!-- info-container -->
        				 	</div> <!-- cd-item-info -->
-        			</li>
       			</form>
+									</div>
+        			</li>
         	<% }); %>
       	<% } %>
     </ul>
