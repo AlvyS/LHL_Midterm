@@ -1,24 +1,24 @@
 $(document).ready(function () {
-// //--------------------------------------  OPEN -------------------------------------------------------------------------
+// //--------------------------------------------  OPEN -------------------------------------------------------------------------
 
-// //------------------------ Open Modal popup when clicking on cart ------------------------------------
-$('#cart-container').on('click', function(event) {
+// //--------------------------------- Open Modal popup when clicking on cart ------------------------------------
+$('.cd-cart').on('click', function(event) {
   event.preventDefault();
   $('.modal-cart').toggleClass('active');
 });
 
-// //------------------------ Close cart when clicking "X" -------------------------------------------
-$('.modal-close').on('click', function(event) {
-  $('.modal-cart').toggleClass('active');
+// //--------------------------------------- Close cart when clicking "X" -------------------------------------------
+$('.modal-cart-close').on('click', function(event) {
+  $('.modal-cart').removeClass('active');
 });
 
-// //--------------------- Item Descriptions Slide Toggle 
+// //-------------------------------------- Item Descriptions Slide Toggle ------------------------------------------
 $('.cd-item-info').on('click', '.info-container', function(event) {
     $(this).find('.item-desc').slideToggle();;
 });
 
 
-// // Scroll Animation Nav Home to Home
+// ////----------------------------------- Scroll Animation Nav Home to Home ------------------------------------------
 $(document).on('click', '#scroll-home', function(event){
     event.preventDefault();
     $('html, body').animate({
@@ -26,7 +26,7 @@ $(document).on('click', '#scroll-home', function(event){
     }, 500);
 });
 
-// // Scroll Animation Nav Menu to Menu
+// ////----------------------------------- Scroll Animation Nav Menu to Menu ------------------------------------------
 $(document).on('click', '#scroll-menu', function(event){
     event.preventDefault();
     $('html, body').animate({
@@ -34,7 +34,7 @@ $(document).on('click', '#scroll-menu', function(event){
     }, 500);
 });
 
-// //----------------- Scroll Animation Arrows to Menu
+// //-------------------------------------- Scroll Animation Arrows to Menu ------------------------------------------------
 $(document).on('click', '#arrow-btn', function(event){
     event.preventDefault();
     $('html, body').animate({
@@ -44,8 +44,61 @@ $(document).on('click', '#arrow-btn', function(event){
 
 
 
+// // ----------------------------------------- ADD ITEM TO CART ------------------------------------------
+$(".cd-gallery").on("click", ".add-to-cart", function(event){ 
+  const $form = $(".submit-form");
+  const $item_id = $(this).closest("li").find(".item_id").val();
+  const $price = $(this).closest("li").find(".price").val();
+  const $quantity = $(this).closest("li").find(".quantity").val();
+  const $request = {
+    price : $price,
+    quantity : $quantity
+  }
+    event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/cart/'+$item_id+'/add',
+      data: $request,
+      success: () => {
+        $('.modal-cart').addClass('active');
+      }
+    })
+});
 
-// // Function to get cart items from current session and post on page
+
+
+
+// // ------------------------------------ REMOVE ITEM FROM CART------------------------------------------
+$("#cart-container").on("click", ".remove-button-in-cart", function(event){ 
+  $(this).closest(".modal-cart").find(".item-price-in-cart").addClass('active');
+  
+  const $form = $(".submit-form");
+  const $item_id = $(this).closest("li").find(".item_id").val();
+  const $price = $(this).closest("li").find(".price").val(); 
+  const $quantity = $(this).closest("li").find(".quantity").val();
+  const $request = {
+    price : $price,
+    quantity : $quantity
+  }
+  //   event.preventDefault();
+    $.ajax({
+      type: 'POST',
+      url: '/cart/'+$item_id+'/delete',
+      data: $request,
+      success: () => {
+      }
+    });
+});
+
+$(".remove-button-in-cart").on("click", function(event) {
+  $(".modal-cart").removeClass("active");
+})
+// $("#cart-container").on("click", ".delete-from-cart", function(event){ 
+//   // $(this).closest(".modal-cart-items").find(".item-price-in-cart").addClass('active');
+//   $(this).closest(".cd-cart").find(".modal-cart").removeClass('active');
+// });
+
+// //-------------------- Function to get cart items from current session and post on page ---------------------
 function getCartItems() {
   $('.cd-cart').on('click', function(){
       $.ajax({
@@ -55,51 +108,32 @@ function getCartItems() {
           success: function(items){
             let htmlData ='<form>';
             let total = 0;
-            console.log('sfdsafdsafdsafdsafds',items);
             if(items){
               items.forEach( (item) => {
                 var loopData = 
-                `<div class="row">
-                    <div class="column small-12 medium-3">
-                      <h3> ${item.name}</h3>
-                    </div>
-                    <div class="column small-12 medium-5">
-                      <h3 name = "price"> ${item.price} </h3>
-                    </div> 
-                    <div class="input-group column small-12 medium-4">
-                      <h3> ${item.quantity} </h3>
-                      <input class="input-group-field" name = "quantity" type="number" for="btn btn-default">
-                    </div>
-                    <div class="row">
-                      <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/${item.item_id}/update" >Edit</button>
-                      <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/${item.item_id}/delete" >Remove</button>
-                    </div>                    
+                `<div class="item-row">
+                    <div name="name" class="item-name-in-cart column small-12 medium-3"> ${item.name}
+                      <span name="price" class="item-price-in-cart column small-12 medium-5"> @ ${item.price} each </span> 
+                      <span class="input-group column small-12 medium-4"> ${item.quantity}
+                        <input class="input-group-field" name = "quantity" type="number" for="btn btn-default">
+                        <button class="remove-button-in-cart" type="submit" formmethod="POST" formaction="cart/${item.item_id}/delete"><span class="glyphicon glyphicon-trash"></span></button>
+                        <button class="edit-button-in-cart" type="submit" formmethod="POST" formaction="cart/${item.item_id}/update">Edit</button>
+                      </span>
+                    </div>                   
                   </div>
                   `;
                   htmlData += loopData;
                   total += item.price*item.quantity;
               });
-                let totalData = `<div class="row">
+                let totalData = `<div class="total-row">
               <div class="column small-12 medium-3">
 
               </div>
-              <div class="column small-12 medium-9">
-                <h3 name="total">Total: ${total} </h3>
-              </div>
+              <div class="total-in-cart column small-12 medium-9">Total cost so far: $ ${total}</div>
+              
             </div>
           </form>
-          <form> 
-            <div class="row">
-              <div class="column small-12 medium-3">
-                <!-- <a class="button primary" type="submit">Add to Cart</a> -->
-                <!-- <input type="submit" value="Tweet"> -->
-                <button type="submit" class="btn btn-default" formmethod="GET" formaction="/checkout" >Checkout</button>
-              </div>
-              <div class="column small-12 medium-9">
-                <a class="button warning" href="/">Cancel</a>
-              </div>
-            </div>
-          </form>
+        
           `;
 
               htmlData += totalData;
@@ -110,47 +144,8 @@ function getCartItems() {
   });
 }
 
-$(function() {
-  const $form = $('#submit');
-  const $price = $('.price');
-  const $quantity = $('#quantity');
-  const $item_id = $('.item_id');
-  
-  $form.submit( (event) => {
-    event.preventDefault();
-    $.ajax({
-      type: 'POST',
-      url: '/cart/$item_id/add',
-      data: $form.serialize(),
-      success: () => {
-        
-      }
-
-    });
-  });
-});
-
-$(function() {
-  const $checkout = $('.checkout-button');
-  $checkout.submit( (event) => {
-    event.preventDefault();
-    $.ajax({
-      type: 'GET',
-      url: '/checkout',
-      success: () => {
-       console.log(`eqwioewqioewquou`); 
-      }
-    });
-  });
-});
-
 getCartItems();
 
 
-// // ---------------------------------------- CLOSE for Document Ready
+// // ---------------------------------------- CLOSE for Document Ready------------------------------------------
 });
-
-// // //-------------- trash
-// $('.checkout-row').on('click', function(event) {
-//   $('.checkout-row').toggleClass('active');
-// });

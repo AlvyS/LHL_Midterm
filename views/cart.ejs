@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <%- include partials/_head.ejs %>
 <body>
@@ -13,7 +13,7 @@
     <% items.forEach( (item) => { %>
       <form>
             <% total += item.price * item.quantity %>
-            <div class="row">
+            <div class="item-row">
               <div class="column small-12 medium-3">
                 <h3 class="name"> <%= item.name %> </h3>
               </div>
@@ -31,7 +31,7 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="edit-row">
           <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/<%= item.item_id %>/update" >Edit</button>
           <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/<%= item.item_id %>/delete" >Remove</button>
         </div>
@@ -39,13 +39,12 @@
     <% }); %>
   <% } %>
       <form> 
-        <div class="row">
-          <div class="column small-12 medium-4">
+        <div class="total-row">
+          <div class="column">
             <h3 name="total">Total: <%= total %> </h3>
           </div>
           <div class="column small-12 medium-4">
-            <!-- <a class="button primary" type="submit">Add to Cart</a> -->
-            <!-- <input type="submit" value="Tweet"> -->
+ 
             <button type="submit" class="btn btn-default" formmethod="GET" formaction="/checkout" >Checkout</button>
           </div>
           <div class="column small-12 medium-4">
@@ -55,4 +54,4 @@
       </form>
   </div>
 </body>
-</html>
+</html>-->

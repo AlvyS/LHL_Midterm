@@ -7,8 +7,8 @@
     <span class="center-block">
       <div class="row">
 
-        <div class="col-sm-4 col-md-4 col-lg-4">
-          <p><b>McArBy King<br>
+        <div class="checkout-side-info col-sm-4 col-md-4 col-lg-4">
+          <p><b>McArby's King<br>
           Phone : (604) 401-1234<br>
           Order Date<br>
           Restaurant Address : </br>
@@ -17,7 +17,7 @@
           V6B 1G8</b></p>
         </div>
 
-        <div class="col-sm-8 col-md-8 col-lg-8">
+        <div class="checkout-main-info col-sm-8 col-md-8 col-lg-8">
           <div class="row">
         <form action="/placeorder" method="POST">
         <fieldset>
@@ -51,7 +51,7 @@
                   <input type="text" class="form-control" id="phone" name="phone" placeholder="phone">
                 </div>
                 <div class="form-group">
-                  <span>Total: <p class="form-control" name="total"><%= total %></p></span>
+                  <span>The Total cost of your order before taxes is: <p name="total" class="total-before-taxes">$<%= total %></p></span>
                 </div>
               <%        } %>
                 <div class="row">

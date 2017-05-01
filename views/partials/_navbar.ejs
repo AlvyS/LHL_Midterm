@@ -19,18 +19,7 @@
       <ul class="nav navbar-nav">
         <li class="active"><a id="scroll-home" href="#home">Home <span class="sr-only">(current)</span></a></li>
         <li><a id="scroll-menu" href="#menu-page">Menu</a></li>
-        <!--<li class="dropdown">-->
-          <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>-->
-          <!--<ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
-          </ul>-->
-          <li class="active"><a href="#">Restaraunt Owner? </a></li>
+          <li class="active"><a href="#">Restaurant Owner? </a></li>
         </li>
       </ul>
 
@@ -38,7 +27,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li>
-        <form>
+        <!--<form>-->
           <div id='cart-container'>
                <a href="#0" class="cd-cart"><span>0</span></a>
                 <div class='modal-cart'>
@@ -46,14 +35,14 @@
                     <div class="modal-cart-items"></div>
                       <div class="checkout-row"> 
                         <span class='modal-cart-close' href="#/0">Close</span>
-                        <div class="checkout-button">
-                          <span formaction="/checkout" formmethod="GET"> Checkout Now! </span>
-                        </div>
+                        <form action="/checkout" method="GET">
+                          <input class="checkout-button" value="Checkout Now!" type="submit" />
+                        </form>
                       </div>
                   </div>
                 </div>
-          </div>
-      </form>
+            </div>
+        <!--</form>-->
         </li>
       </ul>
 
