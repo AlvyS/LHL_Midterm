@@ -37,7 +37,7 @@
 			<% items.forEach( (item) => { %>
 					<li>
 						<div class="row">
-      			<form id="submit">
+      			<form id="submit" action="/cart/<%= item.id %>/add" method="POST" >
 
 
 						 <div class="cd-single-item">

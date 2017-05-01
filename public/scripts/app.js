@@ -98,39 +98,41 @@ function getCartItems() {
   });
 }
 
-$(function() { 
-  const $form = $('#submit');
-  const $item_id = $('input.item_id').val();
-  let url = '/cart/'+$item_id+'/add';
-  $form.on('click', '.add-to-cart',(event) => {
-    event.preventDefault();
-    $.ajax({
-      type: 'POST',
-      url: url,
-      data: $form.serialize(),
-      success: () => {
+// $(function() { 
+//   const $form = $('#submit');
+//   const $item_id = $('input.item_id').val();
+//   let url = '/cart/'+$item_id+'/add';
+//   $form.on('click', '.add-to-cart',(event) => {
+//     event.preventDefault();
+//     $.ajax({
+//       type: 'POST',
+//       url: url,
+//       data: $form.serialize(),
+//       success: () => {
       
-      }
+//       }
 
-    });
-  });
-});
+//     });
+//   });
+// });
 
-$(function() {
-  const $checkout = $('.checkout-button');
-  $checkout.submit( (event) => {
-    event.preventDefault();
-    $.ajax({
-      type: 'GET',
-      url: '/checkout',
-      success: () => {
-       console.log(`eqwioewqioewquou`); 
-      }
-    });
-  });
-});
+// $(function() {
+//   const $checkout = $('.check-out');
+//   $checkout.click( (event) => {
+//     event.preventDefault();
+//     $.ajax({
+//       type: 'GET',
+//       url: '/checkout',
+//       success: () => {
+//        console.log(`eqwioewqioewquou`); 
+//       }
+//     });
+//   });
+// });
 
 getCartItems();
+
+
 
 
 // // ---------------------------------------- CLOSE for Document Ready
