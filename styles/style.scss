@@ -257,7 +257,6 @@ Cart button
 .cd-cart {
 	position: absolute;
 	z-index: 2;
-	top: 4px;
 	right: 10px;
 	height: 70px;
 	width: 70px;
@@ -286,12 +285,6 @@ Cart button
 	&.items-added span {
 		/* counter visible when a product is added to the cart */
 		@include transform(scale(1));
-	}
-
-	@include MQ(L) {
-		position: fixed;
-		top: 30px;
-		right: 30px;
 	}
 }
 
