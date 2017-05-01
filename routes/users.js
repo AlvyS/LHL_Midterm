@@ -7,6 +7,7 @@ const queries = require('./queries');
 
 const twilioLibrary = require('twilio');
 const client = new twilioLibrary.Twilio(accountSid, authToken);
+// const client = new twilioLibrary.Twilio(`${config.accountSid}`, `${config.authToken}`);
 const xml = require('xml');
 const stripe = require('stripe')('sk_test_oiTiaepjGnO00M29MV7vde0y');
 module.exports = (knex) => {
