@@ -35,7 +35,7 @@
 	<ul class="cd-gallery">
 		<% if(items) { %>
 			<% items.forEach( (item) => { %>
-      			<form>
+      			<form id="submit">
 					<li>
 						 <div class="cd-single-item">
               <div> <img class="img-responsive center-block" src= "<%= item.img_url %>" alt="Preview image"> </div>
@@ -50,7 +50,7 @@
 										<option value="6">6</option>
 									</select>
                 </div>
-                <button class="add-to-cart" formmethod="POST" formaction="/cart/<%= item.id %>/add"> <!-- TODO change hardcoded user value-->
+                <button class="add-to-cart" type="submit" > <!-- TODO change hardcoded user value-->
                   <em>Add to Cart</em>
                   <svg x="0px" y="0px" width="32px" height="32px" viewBox="0 0 32 32">
                     <path stroke-dasharray="19.79 19.79" stroke-dashoffset="19.79" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M9,17l3.9,3.9c0.1,0.1,0.2,0.1,0.3,0L23,11"/>
@@ -64,7 +64,8 @@
 								<div class="item-desc"> <%= item.details %></div>
 								<b><a href="#0" class="name"> <%= item.name %></a></b>
 								<!--<em> <p class="form-control" name="price" ><%= item.price %></p></em>-->
-								<input type="text" name="price" value="<%= item.price %>" readonly>
+								<input type="text" class="price" value="<%= item.price %>" readonly>
+								<input type="hidden" class="item_id" value="<%= item.id %>" readonly>
 							</div> <!-- info-container -->
        				 	</div> <!-- cd-item-info -->
         			</li>

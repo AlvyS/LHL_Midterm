@@ -53,19 +53,19 @@ module.exports = (knex) => {
   //update cart item.
   router.post("/cart/:item_id/update", (req, res) => {
     console.log("request body is" , req.body);
-    const cart = {
-      item_id : req.params.item_id,
-      price : req.body.price,
-      quantity : req.body.quantity
+    if(req.body.quantity) {
+      const cart = {
+        item_id : req.params.item_id,
+        price : req.body.price,
+        quantity : req.body.quantity
+      }
+      console.log("cart in update is :", cart );
+      queries.updateCartItem(knex, cart, () => {
+        //res.redirect("/");
+
+      });
+    } else {
     }
-    console.log("cart in update is :", cart );
-    queries.updateCartItem(knex, cart, () => {
-      res.redirect("/cart");
-      // queries.getSessionCart(knex, (items) => {
-      //   // var allItems = {allitems :item};
-        
-      // });
-    });
   });
 
   router.post("/cart/:item_id/delete", (req, res) => {
@@ -76,8 +76,7 @@ module.exports = (knex) => {
     }
     queries.deleteCartItem(knex, cart, () => {
       queries.getSessionCart(knex, (items) => {
-        // var allItems = {allitems :item};
-        res.render('cart', {items : items});
+        //res.redirect("/");
       });
     });
   });
@@ -103,6 +102,7 @@ module.exports = (knex) => {
 
 
   router.post('/message/confirmation/:orderId', (req, res) => {
+    console.log(req.body.firstname)
     queries.getSessionCart(knex, (items) => {
       if(items) {
         var msg = '';
@@ -120,7 +120,7 @@ module.exports = (knex) => {
 
 
   router.post("/placeorder", (req, res, next) => {
-    if (req.body.firstname === '' || req.body.lastname === '' || req.body.phone === '') {
+    if (!req.body.firstname || !req.body.lastname  || !req.body.phone ) {
       req.flash('error', 'first name, last name and phone number are required');
       res.redirect('/checkout');
       return;
@@ -146,7 +146,6 @@ module.exports = (knex) => {
             if (err){
             console.log(err.message);
             }
-            process.stdout.write(call.sid);
             }
             );
           var token = req.body.stripeToken;
