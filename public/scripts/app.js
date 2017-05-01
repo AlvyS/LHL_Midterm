@@ -122,24 +122,6 @@ function getCartItems() {
                         <button class="edit-button-in-cart" type="submit" formmethod="POST" formaction="cart/${item.item_id}/update">Edit</button>
                       </span>
                     </div>                   
-                var loopData =
-                `<div class="row">
-                    <div class="column small-12 medium-3">
-                      <h3> ${item.name}</h3>
-                    </div>
-                    <div class="column small-12 medium-5">
-                      <h3 name = "price"> ${item.price} </h3>
-                    </div>
-                    <div class="input-group column small-12 medium-4">
-                      <h3> ${item.quantity} </h3>
-                      <input class="input-group-field" name = "quantity" type="number" for="btn btn-default">
-                    </div>
-                    <div class="row">
-                      <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/${item.item_id}/update" >Edit</button>
-                      <button class="small-12 medium-6" type="submit" formmethod="POST" formaction="cart/${item.item_id}/delete" >Remove</button>
-                    </div>
-                  </div>
-                  </form>
                   `;
                   htmlData += loopData;
                   total += item.price*item.quantity;

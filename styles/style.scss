@@ -122,14 +122,7 @@ Home
 			}
 		}
 	}
-
-
-
-
-
-
 }
-
 
 
 /* -------------------------------- 
@@ -303,94 +296,95 @@ Cart Items
 		margin: .05em;
 		border-radius: .5em;
 
-.cd-cart {
-	position: absolute;
-	z-index: 2;
-	right: 10px;
-	height: 70px;
-	width: 70px;
-	background: url(/images/cd-icon-cart.svg) no-repeat center center;
-
-	span {
-		/* number of items added to the cart */
+	.cd-cart {
 		position: absolute;
-		top: 2px;
-		right: 5px;
-		height: 18px;
-		width: 18px;
-		line-height: 18px;
+		z-index: 2;
+		right: 10px;
+		height: 70px;
+		width: 70px;
+		background: url(/images/cd-icon-cart.svg) no-repeat center center;
 
-		background-color: $green;
-		.item-price-in-cart {
-			text-align: center;
-			color: white;
-			&:active {
-				text-decoration: line-through;
-				color: $red;
-			}
-		}
-		.item-name-in-cart {
-			text-align: center;
-			font-size: 1em;
-			.input-group {
-				width: 100%;
-				.input-group-field {
-					height: 50%;
-					width: 3em;
-					margin-bottom: .5em;
-					margin-left: 5em;
-				}
-				.edit-button-in-cart {
-					background-color: $white;
-					color: $black;
-					padding: .1em;
-					border-radius: 1em;	
-					float: right;
-					height: 1.8em;
-					width: 3em;
-					&:hover {
-						background-color: $yellow;
-						color: $white;
-						-webkit-animation: enlarge .3s forwards;
-						animation: enlarge .3s forwards;
-					}
-				}
-				.remove-button-in-cart {
-					background-color: $white;
-					color: $black;
-					width: 3em;
-					float: right;
-					height: 1.8em;
-					border-radius: 1em;
-					margin-right:5em;
-					margin-left:1em;
-					&:hover {
-						background-color: $red;
-						color: $white;
-						-webkit-animation: enlarge .3s forwards;
-						animation: enlarge .3s forwards;
-					}
+		span {
+			/* number of items added to the cart */
+			position: absolute;
+			top: 2px;
+			right: 5px;
+			height: 18px;
+			width: 18px;
+			line-height: 18px;
+
+			background-color: $green;
+			.item-price-in-cart {
+				text-align: center;
+				color: white;
+				&:active {
+					text-decoration: line-through;
+					color: $red;
 				}
 			}
+			.item-name-in-cart {
+				text-align: center;
+				font-size: 1em;
+				.input-group {
+					width: 100%;
+					.input-group-field {
+						height: 50%;
+						width: 3em;
+						margin-bottom: .5em;
+						margin-left: 5em;
+					}
+					.edit-button-in-cart {
+						background-color: $white;
+						color: $black;
+						padding: .1em;
+						border-radius: 1em;	
+						float: right;
+						height: 1.8em;
+						width: 3em;
+						&:hover {
+							background-color: $yellow;
+							color: $white;
+							-webkit-animation: enlarge .3s forwards;
+							animation: enlarge .3s forwards;
+						}
+					}
+					.remove-button-in-cart {
+						background-color: $white;
+						color: $black;
+						width: 3em;
+						float: right;
+						height: 1.8em;
+						border-radius: 1em;
+						margin-right:5em;
+						margin-left:1em;
+						&:hover {
+							background-color: $red;
+							color: $white;
+							-webkit-animation: enlarge .3s forwards;
+							animation: enlarge .3s forwards;
+						}
+					}
+				}
+			}
+		}
+		.total-in-cart {
+			color: $white;
+			font-size: 1.5em;
+			text-align: center;
+
+			border-radius: 50%;
+			
+			/* scale it down if no products have been added to the cart */
+			@include transform(scale(0));
+			@include transition(transform .2s 0s);
+		}
+
+		&.items-added span {
+			/* counter visible when a product is added to the cart */
+			@include transform(scale(1));
 		}
 	}
-	.total-in-cart {
-		color: $white;
-		font-size: 1.5em;
-		text-align: center;
-
-		border-radius: 50%;
-		
-		/* scale it down if no products have been added to the cart */
-		@include transform(scale(0));
-		@include transition(transform .2s 0s);
-	}
-
-	&.items-added span {
-		/* counter visible when a product is added to the cart */
-		@include transform(scale(1));
-
-	}
+	
 }
 /* -------------------------------- 
 Cart button

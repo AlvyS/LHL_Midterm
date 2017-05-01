@@ -232,7 +232,7 @@ Cart Container
   transform: scale(1);
 }
 
-@media only screen and (min-width: 1100px) {
+@media only screen and (min-width: 1400px) {
   #cart-container .cd-cart {
     position: fixed;
   }
@@ -356,51 +356,60 @@ Cart Items
 -------------------------------- */
 .modal-cart-items {
   height: 5em;
-  
-  .cd-cart {
+}
+
+.modal-cart-items .item-row {
+  margin: .05em;
+  border-radius: .5em;
+}
+
+.modal-cart-items .item-row .cd-cart {
   position: absolute;
   z-index: 2;
   right: 10px;
   height: 70px;
   width: 70px;
   background: url(/images/cd-icon-cart.svg) no-repeat center center;
-  }
-
 }
 
-.modal-cart-items .item-row {
-  margin: .05em;
-  border-radius: .5em;
+.modal-cart-items .item-row .cd-cart span {
+  /* number of items added to the cart */
+  position: absolute;
+  top: 2px;
+  right: 5px;
+  height: 18px;
+  width: 18px;
+  line-height: 18px;
   background-color: #46b29d;
 }
 
-.modal-cart-items .item-row .item-price-in-cart {
+.modal-cart-items .item-row .cd-cart span .item-price-in-cart {
   text-align: center;
   color: white;
 }
 
-.modal-cart-items .item-row .item-price-in-cart:active {
+.modal-cart-items .item-row .cd-cart span .item-price-in-cart:active {
   text-decoration: line-through;
   color: #DA2224;
 }
 
-.modal-cart-items .item-row .item-name-in-cart {
+.modal-cart-items .item-row .cd-cart span .item-name-in-cart {
   text-align: center;
   font-size: 1em;
 }
 
-.modal-cart-items .item-row .item-name-in-cart .input-group {
+.modal-cart-items .item-row .cd-cart span .item-name-in-cart .input-group {
   width: 100%;
 }
 
-.modal-cart-items .item-row .item-name-in-cart .input-group .input-group-field {
+.modal-cart-items .item-row .cd-cart span .item-name-in-cart .input-group .input-group-field {
   height: 50%;
   width: 3em;
   margin-bottom: .5em;
   margin-left: 5em;
 }
 
-.modal-cart-items .item-row .item-name-in-cart .input-group .edit-button-in-cart {
+.modal-cart-items .item-row .cd-cart span .item-name-in-cart .input-group .edit-button-in-cart {
   background-color: #ffffff;
   color: #2b2e2f;
   padding: .1em;
@@ -410,14 +419,14 @@ Cart Items
   width: 3em;
 }
 
-.modal-cart-items .item-row .item-name-in-cart .input-group .edit-button-in-cart:hover {
+.modal-cart-items .item-row .cd-cart span .item-name-in-cart .input-group .edit-button-in-cart:hover {
   background-color: #f0ca4d;
   color: #ffffff;
   -webkit-animation: enlarge .3s forwards;
   animation: enlarge .3s forwards;
 }
 
-.modal-cart-items .item-row .item-name-in-cart .input-group .remove-button-in-cart {
+.modal-cart-items .item-row .cd-cart span .item-name-in-cart .input-group .remove-button-in-cart {
   background-color: #ffffff;
   color: #2b2e2f;
   width: 3em;
@@ -428,17 +437,36 @@ Cart Items
   margin-left: 1em;
 }
 
-.modal-cart-items .item-row .item-name-in-cart .input-group .remove-button-in-cart:hover {
+.modal-cart-items .item-row .cd-cart span .item-name-in-cart .input-group .remove-button-in-cart:hover {
   background-color: #DA2224;
   color: #ffffff;
   -webkit-animation: enlarge .3s forwards;
   animation: enlarge .3s forwards;
 }
 
-.modal-cart-items .total-in-cart {
+.modal-cart-items .item-row .cd-cart .total-in-cart {
   color: #ffffff;
   font-size: 1.5em;
   text-align: center;
+  border-radius: 50%;
+  /* scale it down if no products have been added to the cart */
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  -o-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: -webkit-transform 0.2s 0s;
+  -moz-transition: -moz-transform 0.2s 0s;
+  transition: transform 0.2s 0s;
+}
+
+.modal-cart-items .item-row .cd-cart.items-added span {
+  /* counter visible when a product is added to the cart */
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+  transform: scale(1);
 }
 
 /* -------------------------------- 
@@ -529,13 +557,13 @@ Single Item
   display: none;
 }
 
-
 .cd-single-item img {
   min-width: 23em;
   max-width: 23em;
   min-height: 15em;
   max-height: 15em;
 }
+
 .cd-single-item select.selectpicker {
   width: 100%;
   height: 100%;
@@ -543,7 +571,6 @@ Single Item
   margin: 0 auto;
   padding-left: 20px;
   background-color: #de5b48;
-
 }
 
 /* -------------------------------- 
